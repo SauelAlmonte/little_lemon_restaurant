@@ -1,8 +1,8 @@
 import React from "react";
-import Header from "./components/Header";
-import Hero from "./components/Hero";
-import Main from "./components/Main";
-import Footer from "./components/Footer";
+import Header from "./components/Header/Header";
+import Hero from "./components/Hero/Hero";
+import Main from "./components/Main/Main";
+import Footer from "./components/Footer/Footer";
 
 function App() {
 	return (

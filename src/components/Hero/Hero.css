@@ -1,0 +1,150 @@
+.hero {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #4a6053; /* Background color */
+	padding: 50px 20px;
+	width: 100%;
+	margin: 0;
+}
+
+.hero-container {
+	display: flex;
+	width: 100%;
+	max-width: 1000px;
+	position: relative;
+}
+
+.hero-text,
+h1,
+.subtitle {
+	color: #edefee;
+	font-family: "Georgia", serif;
+	line-height: 1;
+}
+
+.hero-text h1 {
+	font-size: 3rem;
+	font-weight: bold;
+	margin-bottom: 8px;
+}
+
+.hero-text .subtitle {
+	font-weight: 600;
+	font-size: 1.5rem;
+}
+
+.hero-text p {
+	font-size: 1.2rem;
+	font-weight: 500;
+	line-height: 1.2;
+	margin-bottom: 30px;
+	width: 50%;
+}
+
+.reserve-button {
+	background-color: #f4ce14;
+	color: #333333;
+	font-size: 1.2rem;
+	font-weight: 700;
+	padding: 10px 20px;
+	border-radius: 12px;
+	border: 1px solid #333333;
+	cursor: pointer;
+}
+
+.reserve-button:hover {
+	background-color: #f6d670;
+}
+
+.hero-image {
+	position: relative;
+	z-index: 1;
+	width: 100%;
+	max-width: 40%;
+	border-radius: 10px;
+	top: 40px;
+}
+
+.hero-image img {
+	position: absolute;
+	width: 100%;
+	height: 125%;
+	border-radius: 10px;
+	object-fit: cover;
+	box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.25);
+}
+
+@media (max-width: 480px) {
+	.hero {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-color: #495e57;
+		padding: 10px 20px;
+		width: 100%;
+		margin: 0;
+	}
+
+	.hero-text,
+	h1,
+	.subtitle {
+		color: #edefee;
+		font-family: "Georgia", serif;
+		line-height: 1;
+	}
+
+	.hero-text h1 {
+		font-size: 2rem;
+		font-weight: bold;
+		margin-bottom: 8px;
+	}
+
+	.hero-text .subtitle {
+		font-weight: 600;
+		font-size: 1.2rem;
+	}
+
+	.hero-text p {
+		font-size: 1rem;
+		font-weight: 500;
+		line-height: 1.2;
+		margin-bottom: 30px;
+		width: 75%;
+	}
+
+	.reserve-button {
+		background-color: #f4ce14;
+		color: #333333;
+		font-size: 1rem;
+		font-weight: 700;
+		padding: 10px 20px;
+		border: none;
+		border-radius: 12px;
+		border: 1px solid #f4ce14;
+		cursor: pointer;
+	}
+
+	.reserve-button:hover {
+		cursor: pointer;
+		background-color: #f6d670;
+	}
+
+	.hero-image {
+		position: relative;
+		z-index: 1;
+		width: 100%;
+		min-width: 50%;
+		border-radius: 10px;
+		margin-left: -25px;
+		top: 60px;
+	}
+
+	.hero-image img {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		border-radius: 10px;
+		object-fit: cover;
+	}
+}
