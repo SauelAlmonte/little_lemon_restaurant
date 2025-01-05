@@ -1,0 +1,128 @@
+/* Testimonials Section Styling */
+.testimonials {
+	text-align: center;
+	background-color: #f4a261; /* Matches the background from the image */
+	padding: 100px 20px;
+}
+
+.testimonials-container {
+	max-width: 1000px;
+	margin: 0 auto;
+}
+
+.testimonials header h2 {
+	font-size: 2rem;
+	font-weight: 800;
+	color: #333;
+	margin-bottom: 40px;
+}
+
+/* Grid Layout for Testimonials */
+.testimonials-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	gap: 20px;
+	justify-content: center;
+}
+
+/* Individual Testimonial Cards */
+.testimonial {
+	background-color: #fff;
+	border-radius: 12px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	padding: 20px;
+	text-align: left;
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimonial:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Blockquote Styling */
+.testimonial blockquote {
+	margin: 0;
+	padding: 0 0 10px;
+	font-size: 1.2rem;
+	color: #666;
+	font-style: italic;
+	border-left: 5px solid #e76f51;
+	padding-left: 10px;
+}
+
+/* Footer Styling (Name and Location) */
+.testimonial footer {
+	display: flex;
+	flex-direction: column;
+	margin-top: 15px;
+}
+
+.testimonial footer h4 {
+	font-size: 1.2rem;
+	color: #333;
+	margin: 0;
+}
+
+.testimonial footer p {
+	font-size: 1rem;
+	color: #666;
+	margin: 5px 0 0;
+}
+
+/* Tablet Devices */
+@media (max-width: 768px) {
+	.testimonials {
+		text-align: center;
+		background-color: #f4a261; /* Matches the background from the image */
+		padding: 40px 0px;
+	}
+
+	.testimonials-container {
+		max-width: 600px;
+		margin: 0 auto;
+	}
+
+	.testimonials header h2 {
+		font-size: 1.5rem;
+		margin-bottom: 30px;
+	}
+
+	.testimonial blockquote {
+		font-size: 1.1rem;
+	}
+
+	.testimonial footer h4 {
+		font-size: 1.1rem;
+	}
+
+	.testimonial footer p {
+		font-size: 0.9rem;
+	}
+}
+
+@media (max-width: 480px) {
+	.testimonials {
+		padding: 40px 10px;
+	}
+
+	.testimonials header h2 {
+		font-size: 1.8rem;
+	}
+
+	.testimonial {
+		padding: 15px;
+	}
+
+	.testimonial blockquote {
+		font-size: 1rem;
+	}
+
+	.testimonial footer h4 {
+		font-size: 1rem;
+	}
+
+	.testimonial footer p {
+		font-size: 0.8rem;
+	}
+}

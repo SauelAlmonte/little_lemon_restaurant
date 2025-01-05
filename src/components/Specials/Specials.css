@@ -1,0 +1,220 @@
+.specials-container {
+	width: 100%;
+	/* padding: 20px 200px; */
+	background-color: #f9f9f9;
+}
+
+.specials {
+	margin: 0 auto;
+	max-width: 1000px;
+	padding: 6.5em 0;
+	background-color: #f9f9f9;
+}
+
+.specials-header {
+	display: flex;
+	align-content: center;
+	justify-content: space-between;
+	margin-bottom: 20px;
+}
+
+.specials-header h2 {
+	text-align: left;
+	font-size: 1.2rem;
+	color: #333333;
+	margin-bottom: 30px;
+}
+
+.online-menu-button {
+	background-color: #f4ce14;
+	color: #333333;
+	font-size: 1.2rem;
+	font-weight: 700;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 12px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+.online-menu-button:hover {
+	background-color: #f6d670;
+}
+
+.specials-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	gap: 20px;
+}
+
+.special-item {
+	row-gap: 5px;
+	display: flex;
+	flex-direction: column; /* Ensures content stacks vertically */
+	justify-content: space-between; /* Distributes content evenly */
+	background: #fff;
+	border: 1px solid #e0e0e0;
+	border-radius: 12px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	padding: 20px;
+	height: 100%; /* Ensures cards are the same height */
+}
+
+.special-image-container {
+	width: 100%;
+	height: 100%;
+}
+
+.special-item img {
+	width: 100%;
+	height: 200px;
+	border-radius: 8px 8px 0 0;
+	object-fit: cover;
+}
+
+.special-item-container {
+	display: flex;
+	align-items: center;
+	justify-content: space-between; /* Ensures alignment between header and price */
+	width: 100%;
+}
+
+.special-item h3,
+.special-item p {
+	text-align: left;
+}
+
+.special-item h3 {
+	font-size: 1rem;
+	font-weight: 700;
+	color: #333333;
+	margin: 15px 0 10px;
+}
+
+.special-item .price {
+	font-size: 0.8rem;
+	color: #ee9972;
+	text-align: right;
+	margin-bottom: 15px;
+}
+
+.special-paragraph-container {
+	width: 90%; /* Keeps text width consistent */
+	height: 100%;
+}
+
+.special-item p {
+	text-align: left;
+	font-weight: 400;
+	font-size: 1rem;
+	line-height: 1.2;
+	color: #333333; /* Adjusted for contrast and readability */
+	/* margin-bottom: 15px; */
+}
+
+.special-item button {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-top: 10px;
+	background-color: #f4ce14;
+	color: #333;
+	font-size: 1rem;
+	font-weight: 700;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 12px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+.special-item button .scooter-icon {
+	width: 16px;
+	height: 16px;
+}
+
+.special-item button:hover {
+	background-color: #f6d670;
+}
+
+/* Tablet Devices */
+@media (max-width: 768px) {
+	.specials {
+		max-width: 700px;
+		margin: 0 auto;
+	}
+
+	.specials-header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin-bottom: 10px;
+	}
+
+	.specials-header h2 {
+		font-size: 1.5rem;
+		color: #333333;
+	}
+
+	.online-menu-button {
+		font-size: 1.1rem;
+		font-weight: 700;
+		padding: 10px 20px;
+		border: none;
+		border-radius: 12px;
+		cursor: pointer;
+		transition: background-color 0.3s ease;
+	}
+
+	.specials-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: 15px;
+	}
+
+	/* Flexbox Layout */
+	.specials-grid {
+		display: flex;
+		flex-wrap: wrap; /* Allows items to wrap to the next row */
+		gap: 15px; /* Spacing between items */
+	}
+
+	/* Make the last item take full width */
+	.specials-grid > article:last-child {
+		flex: 1 1 100%; /* Full width for the last card */
+	}
+}
+
+/* Mobile Devices */
+@media (max-width: 480px) {
+	.specials {
+		display: flex;
+		flex-direction: column;
+		padding: 80px 16px;
+		/* max-width: 200px; */
+	}
+
+	.specials-header {
+		margin-bottom: 10px;
+	}
+
+	.specials-header h2 {
+		font-size: 1rem;
+	}
+
+	.online-menu-button {
+		font-size: 1rem;
+	}
+
+	.special-item h3 {
+		font-size: 1rem;
+	}
+
+	.special-item p {
+		font-size: 0.9rem;
+	}
+
+	.special-item img {
+		height: 150px; /* Reduced height for smaller screens */
+	}
+}
