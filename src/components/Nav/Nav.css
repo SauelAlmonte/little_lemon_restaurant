@@ -35,10 +35,10 @@
 
 nav a:hover {
 	cursor: pointer;
-	color: #333333;
+	color: #f4a261;
 	font-weight: bold;
-	border-bottom: 2px solid #333333;
-	transition: color 0.6s ease-in-out, border-bottom 0.3s ease-in-out;
+	border-bottom: 2px solid #f4a261;
+	transition: color 0.3s ease-in-out, border-bottom 0.3s ease-in-out;
 }
 
 /* Hamburger menu styles */
