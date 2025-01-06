@@ -1,10 +1,7 @@
 /* Footer Styles */
 footer {
-	/* display: flex;
-	align-items: center;
-	justify-content: center; */
 	width: 100%;
-	background-color: #fff;
+	background-color: #edefee;
 	height: auto;
 }
 
@@ -36,22 +33,19 @@ footer {
 	flex-direction: column;
 }
 
-/* Footer Columns */
 footer > div {
 	flex: 1;
 	margin: 0 10px;
 }
 
-/* Footer Headings */
 footer h3 {
 	font-size: 1.2rem;
-	color: #333;
+	color: #333333;
 	margin-bottom: 15px;
 	text-transform: uppercase;
 	font-weight: 600;
 }
 
-/* Footer Navigation Links */
 .footer-nav ul {
 	list-style-type: none;
 	padding: 0;
@@ -62,21 +56,33 @@ footer h3 {
 	margin-bottom: 10px;
 }
 
-.footer-nav ul li a {
+.footer-nav ul li a:link {
 	text-decoration: none;
-	color: #333;
+	color: #333333; /* Default link color */
 	font-size: 1rem;
 	transition: color 0.3s ease;
 }
 
-.footer-nav ul li a:hover {
-	color: #f4a261; /* Add hover effect color */
+.footer-nav ul li a:visited {
+	color: #495e57; /* Visited link color */
 }
 
-/* Footer Contact Details */
+.footer-nav ul li a:hover {
+	color: #ee9972;
+	border-bottom: 2px solid #ee9972;
+	transition: color 0.3s ease;
+	cursor: pointer;
+}
+
+.footer-nav ul li a:focus {
+	color: #ee9972;
+	font-weight: 900;
+	outline: none;
+}
+
 .footer-contact h3 {
 	font-size: 1.2rem;
-	color: #333;
+	color: #333333;
 	margin-bottom: 15px;
 	text-transform: uppercase;
 	font-weight: 600;
@@ -91,17 +97,16 @@ p {
 
 .footer-contact .email:hover {
 	cursor: pointer;
-	color: #f4a261; /* Add hover effect color */
+	color: #ee9972;
 }
 
 .footer-contact p:last-child {
 	margin-bottom: 0;
 }
 
-/* Footer Social Media Links */
 .footer-social h3 {
 	font-size: 1.2rem;
-	color: #333;
+	color: #333333;
 	margin-bottom: 15px;
 	text-transform: uppercase;
 	font-weight: 600;
@@ -155,7 +160,7 @@ p {
 	}
 
 	.footer-nav ul li a:hover {
-		color: #f4a261;
+		color: #ee9972;
 	}
 
 	.footer-contact h3 {
@@ -169,7 +174,7 @@ p {
 
 	.footer-contact .email:hover {
 		cursor: pointer;
-		color: #f4a261;
+		color: #ee9972;
 	}
 
 	.footer-social h3 {
@@ -183,11 +188,11 @@ p {
 
 @media (max-width: 480px) {
 	.footer-container {
-	display: flex;
+		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
 		margin: 0 auto;
-	padding: 40px 60px;
+		padding: 40px 60px;
 	}
 
 	.footer-nav-and-contact {

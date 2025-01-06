@@ -1,14 +1,12 @@
 .specials-container {
 	width: 100%;
-	/* padding: 20px 200px; */
-	background-color: #f9f9f9;
+	background-color: #edefee;
 }
 
 .specials {
 	margin: 0 auto;
 	max-width: 1000px;
 	padding: 6.5em 0;
-	background-color: #f9f9f9;
 }
 
 .specials-header {
@@ -50,14 +48,14 @@
 .special-item {
 	row-gap: 5px;
 	display: flex;
-	flex-direction: column; /* Ensures content stacks vertically */
-	justify-content: space-between; /* Distributes content evenly */
+	flex-direction: column;
+	justify-content: space-between;
 	background: #fff;
 	border: 1px solid #e0e0e0;
 	border-radius: 12px;
 	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 	padding: 20px;
-	height: 100%; /* Ensures cards are the same height */
+	height: 100%;
 }
 
 .special-image-container {
@@ -75,7 +73,7 @@
 .special-item-container {
 	display: flex;
 	align-items: center;
-	justify-content: space-between; /* Ensures alignment between header and price */
+	justify-content: space-between;
 	width: 100%;
 }
 
@@ -99,7 +97,7 @@
 }
 
 .special-paragraph-container {
-	width: 90%; /* Keeps text width consistent */
+	width: 90%;
 	height: 100%;
 }
 
@@ -108,8 +106,7 @@
 	font-weight: 400;
 	font-size: 1rem;
 	line-height: 1.2;
-	color: #333333; /* Adjusted for contrast and readability */
-	/* margin-bottom: 15px; */
+	color: #333333;
 }
 
 .special-item button {
@@ -175,13 +172,12 @@
 	/* Flexbox Layout */
 	.specials-grid {
 		display: flex;
-		flex-wrap: wrap; /* Allows items to wrap to the next row */
-		gap: 15px; /* Spacing between items */
+		flex-wrap: wrap;
+		gap: 15px;
 	}
 
-	/* Make the last item take full width */
 	.specials-grid > article:last-child {
-		flex: 1 1 100%; /* Full width for the last card */
+		flex: 1 1 100%;
 	}
 }
 
@@ -191,7 +187,6 @@
 		display: flex;
 		flex-direction: column;
 		padding: 80px 16px;
-		/* max-width: 200px; */
 	}
 
 	.specials-header {
@@ -215,6 +210,6 @@
 	}
 
 	.special-item img {
-		height: 150px; /* Reduced height for smaller screens */
+		height: 150px;
 	}
 }

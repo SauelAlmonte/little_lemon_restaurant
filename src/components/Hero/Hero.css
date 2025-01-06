@@ -2,7 +2,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background-color: #4a6053; /* Background color */
+	background-color: #4a6053;
 	padding: 50px 20px;
 	width: 100%;
 	margin: 0;
@@ -15,9 +15,8 @@
 	position: relative;
 }
 
-/* Consolidate common styles */
-.hero-text{
-	line-height: .5;
+.hero-text {
+	line-height: 0.5;
 }
 
 .title {
@@ -49,9 +48,10 @@
 	font-size: 1.2rem;
 	font-weight: 700;
 	padding: 10px 20px;
-	border: 1px solid #333333;
+	border: 1px solid #f4ce14;
 	border-radius: 12px;
 	cursor: pointer;
+	box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 .reserve-button:hover {
@@ -112,14 +112,13 @@
 		font-size: 1rem;
 		font-weight: 500;
 		line-height: 1.2;
-		/* margin-bottom: 30px; */
 		width: 75%;
 	}
 
 	.reserve-button {
 		background-color: #f4ce14;
 		color: #333333;
-		font-size: 1.1rem; /* Slightly larger button text for readability */
+		font-size: 1.1rem;
 		font-weight: 700;
 		padding: 0.7em 1.2em;
 		border: 1px solid #f4ce14;
@@ -134,11 +133,11 @@
 	.hero-image {
 		position: relative;
 		z-index: 1;
-		width: 100%; /* Takes less space compared to mobile */
+		width: 100%;
 		max-width: 100%;
-		max-height: 50vh; /* Allows more vertical space on tablets */
+		max-height: 50vh;
 		border-radius: 10px;
-		margin-left: -30px; /* Slightly smaller offset for better alignment */
+		margin-left: -30px;
 		top: 50px;
 	}
 

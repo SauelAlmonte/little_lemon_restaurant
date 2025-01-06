@@ -1,7 +1,7 @@
 /* About Section */
 .about {
 	width: 100%;
-	background-color: #495e57; /* Matches the dark green background */
+	background-color: #495e57;
 }
 
 .about-container {
@@ -16,7 +16,6 @@
 	color: #edefee;
 }
 
-/* Header Section */
 .about header {
 	text-align: left;
 	height: 100%;
@@ -64,9 +63,6 @@ header .about-header {
 	position: absolute;
 	width: 100%;
 	height: 100%;
-	/* display: flex;
-	justify-content: center;
-	align-items: center; */
 }
 
 .about-images img {
@@ -76,22 +72,20 @@ header .about-header {
 	object-fit: cover;
 }
 
-/* First Image (Interior) */
 .about-images img:first-child {
 	width: 300px;
 	height: 350px;
-	left: 0px; /* Moves the image to the left */
-	top: 140px; /* Slight vertical offset */
-	z-index: 1; /* Below the chef image */
+	left: 0px;
+	top: 140px;
+	z-index: 1;
 }
 
-/* Second Image (Chef) */
 .about-images img:last-child {
 	width: 300px;
 	height: 350px;
-	left: 175px; /* Moves the image slightly right */
-	top: 20px; /* Overlaps the first image */
-	z-index: 2; /* Above the interior image */
+	left: 175px;
+	top: 20px;
+	z-index: 2;
 }
 
 /* Responsive Adjustments */
@@ -103,14 +97,13 @@ header .about-header {
 	.about-container {
 		height: 500px;
 		padding: 30px 40px;
-		color: #fff;
+		color: #edefee;
 	}
 
 	.about .about-container header .about-header {
 		line-height: 0.01;
 	}
 
-	/* Paragraph Styling */
 	.about .about-container header p {
 		font-size: 1.1rem;
 	}
@@ -137,22 +130,20 @@ header .about-header {
 		align-items: center;
 	}
 
-	/* First Image (Interior) */
 	.about-images img:first-child {
 		width: 250px;
 		height: 300px;
-		left: -30px; /* Moves the image to the left */
-		top: 140px; /* Slight vertical offset */
-		z-index: 1; /* Below the chef image */
+		left: -30px;
+		top: 140px;
+		z-index: 1;
 	}
 
-	/* Second Image (Chef) */
 	.about-images img:last-child {
 		width: 250px;
 		height: 300px;
-		left: 40px; /* Moves the image slightly right */
-		top: 20px; /* Overlaps the first image */
-		z-index: 2; /* Above the interior image */
+		left: 40px;
+		top: 20px;
+		z-index: 2;
 	}
 }
 
@@ -176,21 +167,19 @@ header .about-header {
 		align-items: center;
 	}
 
-	/* First Image (Interior) */
 	.about-images img:first-child {
 		width: 250px;
 		height: 300px;
-		left: -5px; /* Moves the image to the left */
-		top: 100px; /* Slight vertical offset */
-		z-index: 1; /* Below the chef image */
+		left: -5px;
+		top: 100px;
+		z-index: 1;
 	}
 
-	/* Second Image (Chef) */
 	.about-images img:last-child {
 		width: 250px;
 		height: 300px;
-		left: 70px; /* Moves the image slightly right */
-		top: -20px; /* Overlaps the first image */
-		z-index: 2; /* Above the interior image */
+		left: 70px;
+		top: -20px;
+		z-index: 2;
 	}
 }

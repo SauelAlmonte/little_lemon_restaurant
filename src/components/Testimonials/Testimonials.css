@@ -1,7 +1,7 @@
 /* Testimonials Section Styling */
 .testimonials {
 	text-align: center;
-	background-color: #f4a261; /* Matches the background from the image */
+	background-color: #ee9972; /* Matches the background from the image */
 	padding: 100px 20px;
 }
 
@@ -27,7 +27,7 @@
 
 /* Individual Testimonial Cards */
 .testimonial {
-	background-color: #fff;
+	background-color: #edefee;
 	border-radius: 12px;
 	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 	padding: 20px;
@@ -72,11 +72,11 @@
 	font-size: 1.2rem;
 	color: #666;
 	font-style: italic;
-	border-left: 5px solid #e76f51;
+	border-left: 5px solid #ee9972;
 	padding-left: 10px;
 }
 
-.testimonial blockquote p{
+.testimonial blockquote p {
 	font-size: 0.9rem;
 }
 
@@ -84,7 +84,7 @@
 @media (max-width: 768px) {
 	.testimonials {
 		text-align: center;
-		background-color: #f4a261; /* Matches the background from the image */
+		background-color: #ee9972; /* Matches the background from the image */
 		padding: 40px 0px;
 	}
 
