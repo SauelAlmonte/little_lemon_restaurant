@@ -21,22 +21,34 @@ function Nav() {
 			</button>
 			<ul className={`nav ${menuOpen ? "nav-open" : ""}`}>
 				<li>
-					<a href="/home">Home</a>
+					<a href="#home" onClick={() => setMenuOpen(false)}>
+						Home
+					</a>
 				</li>
 				<li>
-					<a href="/about">About</a>
+					<a href="#about" onClick={() => setMenuOpen(false)}>
+						About
+					</a>
 				</li>
 				<li>
-					<a href="/menu">Menu</a>
+					<a href="#menu" onClick={() => setMenuOpen(false)}>
+						Menu
+					</a>
 				</li>
 				<li>
-					<a href="/reservations">Reservations</a>
+					<a href="#reservations" onClick={() => setMenuOpen(false)}>
+						Reservations
+					</a>
 				</li>
 				<li>
-					<a href="/order-online">Order Online</a>
+					<a href="#order-online" onClick={() => setMenuOpen(false)}>
+						Order Online
+					</a>
 				</li>
 				<li>
-					<a href="/login">Login</a>
+					<a href="#login" onClick={() => setMenuOpen(false)}>
+						Login
+					</a>
 				</li>
 			</ul>
 		</nav>

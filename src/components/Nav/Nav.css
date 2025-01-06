@@ -1,4 +1,12 @@
 /* Container styles for navigation */
+html {
+	scroll-behavior: smooth;
+}
+
+section {
+	scroll-margin-top: 70px; /* Adds spacing between the target section and the fixed nav */
+}
+
 .nav-container {
 	display: flex;
 	justify-content: right;
@@ -13,7 +21,7 @@
 	gap: 30px;
 	padding: 0;
 	margin: 0;
-	z-index: 900;
+	z-index: 1000;
 }
 
 .nav ul {

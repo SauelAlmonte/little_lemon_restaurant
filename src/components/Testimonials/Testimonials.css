@@ -13,7 +13,7 @@
 .testimonials header h2 {
 	font-size: 2rem;
 	font-weight: 800;
-	color: #333;
+	color: #333333;
 	margin-bottom: 40px;
 }
 
@@ -40,6 +40,31 @@
 	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
+.testimonial .avatar {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	line-height: 0.01;
+	column-gap: 10px;
+}
+
+.testimonial .avatar img {
+	width: 40px;
+	height: 40px;
+}
+
+.testimonial .avatar h4 {
+	font-size: 1rem;
+	font-weight: 600;
+	color: #333333;
+}
+
+.testimonial .avatar p {
+	font-size: 0.8rem;
+	font-weight: 400;
+	color: #333333;
+}
+
 /* Blockquote Styling */
 .testimonial blockquote {
 	margin: 0;
@@ -51,23 +76,8 @@
 	padding-left: 10px;
 }
 
-/* Footer Styling (Name and Location) */
-.testimonial footer {
-	display: flex;
-	flex-direction: column;
-	margin-top: 15px;
-}
-
-.testimonial footer h4 {
-	font-size: 1.2rem;
-	color: #333;
-	margin: 0;
-}
-
-.testimonial footer p {
-	font-size: 1rem;
-	color: #666;
-	margin: 5px 0 0;
+.testimonial blockquote p{
+	font-size: 0.9rem;
 }
 
 /* Tablet Devices */
