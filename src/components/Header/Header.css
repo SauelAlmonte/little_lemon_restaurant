@@ -23,6 +23,11 @@
 	height: auto;
 }
 
+.logo {
+	cursor: pointer;
+}
+
+
 /* Responsive styles for smaller screens */
 @media (max-width: 768px) {
 	.header {

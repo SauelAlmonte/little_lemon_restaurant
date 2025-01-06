@@ -1,7 +1,7 @@
 /* About Section */
 .about {
 	width: 100%;
-	background-color: #496e5a; /* Matches the dark green background */
+	background-color: #495e57; /* Matches the dark green background */
 }
 
 .about-container {
@@ -13,7 +13,7 @@
 	align-items: center;
 	gap: 40px;
 	padding: 60px 20px;
-	color: #fff;
+	color: #edefee;
 }
 
 /* Header Section */
@@ -24,13 +24,13 @@
 	grid-column: 1 / 2;
 }
 
-.about .about-container header .about-header {
-	line-height: 0.1;
+header .about-header {
+	line-height: 0.5;
 }
 
 .about .about-container header .about-header h2 {
 	font-size: 2rem;
-	color: #fff;
+	color: #edefee;
 	margin-bottom: 10px;
 	font-weight: 700;
 }
@@ -38,15 +38,16 @@
 .about .about-container header .about-header p {
 	font-size: 1.5rem;
 	font-weight: 400;
-	color: #e9c46a;
+	color: #edefee;
 }
 
 /* Paragraph Styling */
-.about .about-container header p {
+.about .about-paragraph {
 	font-size: 1.2rem;
+	font-weight: 400;
 	line-height: 1.2;
 	margin-bottom: 0;
-	color: #eaeaea;
+	color: #edefee;
 }
 
 .about-images-container {

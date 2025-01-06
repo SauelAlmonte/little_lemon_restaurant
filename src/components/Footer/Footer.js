@@ -7,11 +7,23 @@ import twitter from "../../assets/images/twitter.png";
 import tiktok from "../../assets/images/tiktok.png";
 
 function Footer() {
+	const scrollToTop = () => {
+		window.scrollTo({
+			top: 0,
+			behavior: "smooth", // Smooth scrolling effect
+		});
+	};
+
 	return (
 		<footer>
 			<div className="footer-container">
 				<div className="footer-logo">
-					<img src={logo} alt="little-lemon-logo" />
+					<img
+						src={logo}
+						alt="little-lemon-logo"
+						onClick={scrollToTop}
+						style={{ cursor: "pointer" }} // Make it clear the logo is clickable
+					/>
 				</div>
 				<div className="footer-nav-and-contact">
 					<div className="footer-nav">

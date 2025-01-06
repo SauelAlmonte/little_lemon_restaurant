@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "./Nav.css";
 
 function Nav() {
@@ -6,6 +7,14 @@ function Nav() {
 
 	const toggleMenu = () => {
 		setMenuOpen(!menuOpen);
+	};
+
+	const handleScroll = (id) => {
+		const section = document.getElementById(id);
+		if (section) {
+			section.scrollIntoView({ behavior: "smooth" });
+		}
+		setMenuOpen(false);
 	};
 
 	return (
@@ -21,34 +30,34 @@ function Nav() {
 			</button>
 			<ul className={`nav ${menuOpen ? "nav-open" : ""}`}>
 				<li>
-					<a href="#home" onClick={() => setMenuOpen(false)}>
+					<Link to="/" onClick={() => handleScroll("home")}>
 						Home
-					</a>
+					</Link>
 				</li>
 				<li>
-					<a href="#about" onClick={() => setMenuOpen(false)}>
+					<Link to="/" onClick={() => handleScroll("about")}>
 						About
-					</a>
+					</Link>
 				</li>
 				<li>
-					<a href="#menu" onClick={() => setMenuOpen(false)}>
+					<Link to="/" onClick={() => handleScroll("menu")}>
 						Menu
-					</a>
+					</Link>
 				</li>
 				<li>
-					<a href="#reservations" onClick={() => setMenuOpen(false)}>
+					<Link to="/reserve-table" onClick={() => setMenuOpen(false)}>
 						Reservations
-					</a>
+					</Link>
 				</li>
 				<li>
-					<a href="#order-online" onClick={() => setMenuOpen(false)}>
+					<Link to="/" onClick={() => handleScroll("order-online")}>
 						Order Online
-					</a>
+					</Link>
 				</li>
 				<li>
-					<a href="#login" onClick={() => setMenuOpen(false)}>
+					<Link to="/" onClick={() => handleScroll("login")}>
 						Login
-					</a>
+					</Link>
 				</li>
 			</ul>
 		</nav>

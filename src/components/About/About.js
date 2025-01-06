@@ -12,7 +12,7 @@ function About() {
 						<h2>Little Lemon</h2>
 						<p>Chicago</p>
 					</div>
-					<p>
+					<p className="about-paragraph">
 						Nestled in the heart of Chicago, Little Lemon is a family-owned restaurant
 						that celebrates the art of simple, flavorful, and fresh cuisine. Our menu
 						is inspired by Mediterranean traditions, bringing together bold
