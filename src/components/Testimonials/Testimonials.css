@@ -1,7 +1,9 @@
 /* Testimonials Section Styling */
 .testimonials {
 	text-align: center;
-	background-color: #ee9972; /* Matches the background from the image */
+	background-color: var(
+		--secondary-orange
+	); /* Matches the secondary orange color */
 	padding: 100px 20px;
 }
 
@@ -12,8 +14,8 @@
 
 .testimonials header h2 {
 	font-size: 2rem;
-	font-weight: 800;
-	color: #333333;
+	font-family: var(--font-headlines); /* Uses font-headlines for headers */
+	color: var(--highlight-dark); /* Highlight dark for contrast */
 	margin-bottom: 40px;
 }
 
@@ -27,7 +29,7 @@
 
 /* Individual Testimonial Cards */
 .testimonial {
-	background-color: #edefee;
+	background-color: var(--highlight-light); /* Light background for cards */
 	border-radius: 12px;
 	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 	padding: 20px;
@@ -44,48 +46,49 @@
 	display: flex;
 	align-items: center;
 	width: 100%;
-	line-height: 0.01;
 	column-gap: 10px;
+	margin-bottom: 10px;
 }
 
 .testimonial .avatar img {
 	width: 40px;
 	height: 40px;
+	border-radius: 50%; /* Ensures the avatar is circular */
 }
 
 .testimonial .avatar h4 {
 	font-size: 1rem;
+	font-family: var(--font-paragraphs); /* Uses font-paragraphs for text */
 	font-weight: 600;
-	color: #333333;
+	color: var(--highlight-dark);
 }
 
 .testimonial .avatar p {
 	font-size: 0.8rem;
+	font-family: var(--font-paragraphs); /* Uses font-paragraphs for text */
 	font-weight: 400;
-	color: #333333;
+	color: var(--highlight-dark);
 }
 
 /* Blockquote Styling */
 .testimonial blockquote {
 	margin: 0;
-	padding: 0 0 10px;
 	font-size: 1.2rem;
-	color: #666;
+	color: var(--highlight-dark); /* Uses highlight dark for blockquote text */
 	font-style: italic;
-	border-left: 5px solid #ee9972;
-	padding-left: 10px;
+	border-left: 5px solid var(--secondary-orange); /* Matches secondary orange */
+	padding: 0 0 10px 10px;
 }
 
 .testimonial blockquote p {
 	font-size: 0.9rem;
+	font-family: var(--font-paragraphs); /* Uses font-paragraphs */
 }
 
 /* Tablet Devices */
 @media (max-width: 768px) {
 	.testimonials {
-		text-align: center;
-		background-color: #ee9972; /* Matches the background from the image */
-		padding: 40px 0px;
+		padding: 40px 20px;
 	}
 
 	.testimonials-container {
@@ -102,22 +105,23 @@
 		font-size: 1.1rem;
 	}
 
-	.testimonial footer h4 {
+	.testimonial .avatar h4 {
 		font-size: 1.1rem;
 	}
 
-	.testimonial footer p {
+	.testimonial .avatar p {
 		font-size: 0.9rem;
 	}
 }
 
+/* Mobile Devices */
 @media (max-width: 480px) {
 	.testimonials {
 		padding: 40px 10px;
 	}
 
 	.testimonials header h2 {
-		font-size: 1.8rem;
+		font-size: 1.2rem;
 	}
 
 	.testimonial {
@@ -128,11 +132,11 @@
 		font-size: 1rem;
 	}
 
-	.testimonial footer h4 {
+	.testimonial .avatar h4 {
 		font-size: 1rem;
 	}
 
-	.testimonial footer p {
+	.testimonial .avatar p {
 		font-size: 0.8rem;
 	}
 }

@@ -1,3 +1,57 @@
+/* App Container */
 .App {
-	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	color: var(--highlight-dark);
+	font-family: var(--font-paragraphs);
+}
+
+/* Header */
+.App-header {
+	color: var(--highlight-light);
+	padding: 20px;
+	text-align: center;
+	font-family: var(--font-headlines);
+	font-size: 2rem;
+	font-weight: 500;
+}
+
+/* Main Content Area */
+.App-main {
+	flex: 1;
+}
+
+/* Footer */
+.App-footer {
+	color: var(--highlight-light);
+	text-align: center;
+	padding: 10px 20px;
+	font-family: var(--font-paragraphs);
+	font-size: 1rem;
+}
+
+/* Responsive Design Adjustments */
+@media (min-width: 320px) and (max-width: 480px) {
+	.App-header {
+		font-size: 1.5rem;
+		padding: 15px;
+	}
+
+	.App-footer {
+		font-size: 0.9rem;
+		padding: 8px 15px;
+	}
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+	.App-header {
+		font-size: 1.8rem;
+		padding: 18px;
+	}
+
+	.App-footer {
+		font-size: 0.95rem;
+		padding: 9px 18px;
+	}
 }

@@ -1,12 +1,12 @@
+/* Specials Section */
 .specials-container {
 	width: 100%;
-	background-color: #edefee;
 }
 
 .specials {
 	margin: 0 auto;
 	max-width: 1000px;
-	padding: 6.5em 0;
+	padding: 100px 20px;
 }
 
 .specials-header {
@@ -18,21 +18,25 @@
 
 .specials-header h2 {
 	text-align: left;
-	font-size: 1.2rem;
-	color: #333333;
+	font-size: 1.5rem;
+	font-family: var(--font-headlines); /* Uses the font-headlines variable */
+	font-weight: 700;
+	color: var(--highlight-dark);
 	margin-bottom: 30px;
 }
 
 .online-menu-button {
-	background-color: #f4ce14;
-	color: #333333;
+	background-color: var(--primary-yellow);
+	color: var(--highlight-dark);
 	font-size: 1.2rem;
+	font-family: var(--font-paragraphs); /* Uses the font-paragraphs variable */
 	font-weight: 700;
 	padding: 10px 20px;
-	border: none;
+	border: 1px solid var(--primary-yellow);
 	border-radius: 12px;
 	cursor: pointer;
 	transition: background-color 0.3s ease;
+	box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 .online-menu-button:hover {
@@ -46,12 +50,10 @@
 }
 
 .special-item {
-	row-gap: 5px;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	background: #fff;
-	border: 1px solid #e0e0e0;
+	border: 1px solid var(--highlight-dark);
 	border-radius: 12px;
 	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 	padding: 20px;
@@ -83,15 +85,18 @@
 }
 
 .special-item h3 {
-	font-size: 1rem;
+	font-size: 1.1rem;
+	font-family: var(--font-paragraphs);
 	font-weight: 700;
-	color: #333333;
+	color: var(--highlight-dark);
 	margin: 15px 0 10px;
 }
 
 .special-item .price {
-	font-size: 0.8rem;
-	color: #ee9972;
+	font-size: 1rem;
+	font-family: var(--font-paragraphs);
+	font-weight: 400;
+	color: var(--secondary-orange);
 	text-align: right;
 	margin-bottom: 15px;
 }
@@ -103,10 +108,11 @@
 
 .special-item p {
 	text-align: left;
+	font-family: var(--font-paragraphs);
 	font-weight: 400;
 	font-size: 1rem;
-	line-height: 1.2;
-	color: #333333;
+	line-height: 1.5;
+	color: var(--highlight-dark);
 }
 
 .special-item button {
@@ -114,9 +120,10 @@
 	align-items: center;
 	justify-content: space-between;
 	margin-top: 10px;
-	background-color: #f4ce14;
-	color: #333;
+	background-color: var(--primary-yellow);
+	color: var(--highlight-dark);
 	font-size: 1rem;
+	font-family: var(--font-paragraphs);
 	font-weight: 700;
 	padding: 10px 20px;
 	border: none;
@@ -131,74 +138,58 @@
 }
 
 .special-item button:hover {
-	background-color: #f6d670;
+	background-color: var(--secondary-orange);
 }
 
 /* Tablet Devices */
-@media (max-width: 768px) {
+@media (min-width: 481px) and (max-width: 768px) {
 	.specials {
 		max-width: 700px;
 		margin: 0 auto;
+		padding: 75px 20px;
 	}
 
 	.specials-header {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		margin-bottom: 10px;
+		margin-bottom: 15px;
 	}
 
 	.specials-header h2 {
-		font-size: 1.5rem;
-		color: #333333;
+		font-size: 1.3rem;
 	}
 
 	.online-menu-button {
 		font-size: 1.1rem;
-		font-weight: 700;
 		padding: 10px 20px;
-		border: none;
-		border-radius: 12px;
-		cursor: pointer;
-		transition: background-color 0.3s ease;
 	}
 
 	.specials-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 		gap: 15px;
-	}
-
-	/* Flexbox Layout */
-	.specials-grid {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 15px;
-	}
-
-	.specials-grid > article:last-child {
-		flex: 1 1 100%;
 	}
 }
 
-/* Mobile Devices */
-@media (max-width: 480px) {
+/* Mobile Devices (320px to 480px) */
+@media (min-width: 320px) and (max-width: 480px) {
 	.specials {
 		display: flex;
 		flex-direction: column;
-		padding: 80px 16px;
+		padding: 65px 16px;
 	}
 
 	.specials-header {
-		margin-bottom: 10px;
+		margin-bottom: 15px;
 	}
 
 	.specials-header h2 {
-		font-size: 1rem;
+		font-size: 1.2rem;
 	}
 
 	.online-menu-button {
 		font-size: 1rem;
+		padding: 8px 16px;
 	}
 
 	.special-item h3 {
@@ -211,5 +202,9 @@
 
 	.special-item img {
 		height: 150px;
+	}
+
+	.specials-grid {
+		gap: 10px;
 	}
 }

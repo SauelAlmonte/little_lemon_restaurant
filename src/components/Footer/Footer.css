@@ -1,8 +1,8 @@
 /* Footer Styles */
 footer {
 	width: 100%;
-	background-color: #edefee;
 	height: auto;
+	border: 1px solid var(--primary-green);
 }
 
 .footer-container {
@@ -40,7 +40,8 @@ footer > div {
 
 footer h3 {
 	font-size: 1.2rem;
-	color: #333333;
+	font-family: "Karla", sans-serif;
+	color: var(--highlight-dark);
 	margin-bottom: 15px;
 	text-transform: uppercase;
 	font-weight: 600;
@@ -58,46 +59,48 @@ footer h3 {
 
 .footer-nav ul li a:link {
 	text-decoration: none;
-	color: #333333; /* Default link color */
+	color: var(--highlight-dark); /* Default link color */
 	font-size: 1rem;
+	font-family: "Karla", sans-serif;
 	transition: color 0.3s ease;
 }
 
 .footer-nav ul li a:visited {
-	color: #495e57; /* Visited link color */
+	color: var(--primary-green); /* Visited link color */
 }
 
 .footer-nav ul li a:hover {
-	color: #ee9972;
-	border-bottom: 2px solid #ee9972;
+	color: var(--secondary-orange);
+	border-bottom: 2px solid var(--secondary-orange);
 	transition: color 0.3s ease;
 	cursor: pointer;
 }
 
 .footer-nav ul li a:focus {
-	color: #ee9972;
+	color: var(--secondary-orange);
 	font-weight: 900;
 	outline: none;
 }
 
 .footer-contact h3 {
 	font-size: 1.2rem;
-	color: #333333;
+	font-family: "Karla", sans-serif;
+	color: var(--highlight-dark);
 	margin-bottom: 15px;
 	text-transform: uppercase;
 	font-weight: 600;
 }
 
-.footer-contact,
-p {
+.footer-contact p {
 	font-size: 1rem;
+	font-family: "Karla", sans-serif;
 	color: #666;
-	row-gap: 10px;
+	margin-bottom: 10px;
 }
 
 .footer-contact .email:hover {
 	cursor: pointer;
-	color: #ee9972;
+	color: var(--secondary-orange);
 }
 
 .footer-contact p:last-child {
@@ -106,7 +109,8 @@ p {
 
 .footer-social h3 {
 	font-size: 1.2rem;
-	color: #333333;
+	font-family: "Karla", sans-serif;
+	color: var(--highlight-dark);
 	margin-bottom: 15px;
 	text-transform: uppercase;
 	font-weight: 600;
@@ -128,18 +132,21 @@ p {
 
 /* Responsive Adjustments */
 /* Tablet Devices */
-@media (max-width: 768px) {
+@media (min-width: 768px) and (max-width: 1023px) {
 	.footer-container {
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
 		margin: 0 auto;
-		padding: 40px 60px;
+		padding: 40px 40px;
 	}
 
 	.footer-nav-and-contact {
 		display: flex;
+		justify-content: space-between;
+		width: 100%;
 		column-gap: 40px;
+		padding-top: 10px;
 	}
 
 	.footer-nav {
@@ -159,22 +166,17 @@ p {
 		font-size: 0.9rem;
 	}
 
-	.footer-nav ul li a:hover {
-		color: #ee9972;
-	}
-
 	.footer-contact h3 {
 		font-size: 1.1rem;
 	}
 
-	.footer-contact,
-	p {
+	.footer-contact p {
 		font-size: 0.9rem;
 	}
 
 	.footer-contact .email:hover {
 		cursor: pointer;
-		color: #ee9972;
+		color: var(--secondary-orange);
 	}
 
 	.footer-social h3 {
@@ -186,13 +188,14 @@ p {
 	}
 }
 
-@media (max-width: 480px) {
+/* Mobile Devices (320px to 480px) */
+@media (min-width: 320px) and (max-width: 480px) {
 	.footer-container {
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
 		margin: 0 auto;
-		padding: 40px 60px;
+		padding: 30px 16px;
 	}
 
 	.footer-nav-and-contact {
@@ -200,14 +203,34 @@ p {
 		flex-direction: column;
 	}
 
+	.footer-logo {
+		width: 100%;
+		margin-bottom: 20px;
+	}
+
+	.footer-nav ul li a {
+		font-size: 0.85rem;
+		text-align: center;
+	}
+
+	.footer-contact p {
+		font-size: 0.85rem;
+	}
+
+	.footer-social h3 {
+		font-size: 1rem;
+		text-align: center;
+	}
+
 	.social-icons {
 		display: flex;
 		align-items: center;
-		justify-content: space-around;
-		width: 50%;
+		justify-content: center;
+		gap: 15px;
+		width: auto;
 	}
 
 	.social-icons img {
-		width: 30px;
+		width: 25px;
 	}
 }

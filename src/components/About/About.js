@@ -25,12 +25,14 @@ function About() {
 						make you feel at home.
 					</p>
 				</header>
-				<div className="about-images-container">
-					<figure className="about-images">
-						<img src={aboutImage1} alt="Interior of Little Lemon" />
-						<img src={aboutImage2} alt="Chef preparing food" />
-					</figure>
-				</div>
+				<aside className="about-images-container">
+					<img
+						src={aboutImage1}
+						alt="Interior of Little Lemon"
+						className="about-image"
+					/>
+					<img src={aboutImage2} alt="Chef preparing food" className="about-image" />
+				</aside>
 			</div>
 		</section>
 	);

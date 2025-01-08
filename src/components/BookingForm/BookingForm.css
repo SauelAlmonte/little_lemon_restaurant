@@ -1,0 +1,124 @@
+.booking-form-section {
+	margin: 0 auto;
+	width: 100%;
+	padding: 60px;
+}
+
+.booking-form-container {
+	border: 1px solid var(--highlight-dark);
+	border-radius: 12px;
+	padding: 40px;
+	width: 100%;
+	max-width: 500px;
+	margin: 0 auto;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* FORM STYLING */
+.booking-form {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	gap: 20px;
+}
+
+label {
+	font-family: var(--font-paragraphs);
+	font-size: 16px;
+	font-weight: bold;
+	color: var(--highlight-dark);
+}
+
+input,
+select {
+	border: 1px solid var(--highlight-dark);
+	border-radius: 12px;
+	padding: 10px;
+	font-size: 16px;
+	font-family: var(--font-paragraphs);
+	width: 100%;
+}
+
+input:focus,
+select:focus {
+	outline: 2px solid var(--primary-green);
+	box-shadow: 0 0 5px rgba(73, 94, 87, 0.5);
+}
+
+input[type="submit"] {
+	background-color: var(--primary-yellow);
+	transition: background-color 0.3s ease;
+	color: var(--highlight-dark);
+	border: none;
+	border-radius: 12px;
+	padding: 10px 20px;
+	font-size: 16px;
+	font-family: var(--font-paragraphs);
+	font-weight: bold;
+	cursor: pointer;
+	box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+input[type="submit"]:hover {
+	background-color: #f6d670;
+}
+
+input::placeholder {
+	color: var(--highlight-dark);
+	font-style: italic;
+}
+
+/* Responsive Design */
+/* Tablet (481px to 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+	.booking-form-section {
+		padding: 40px;
+	}
+
+	.booking-form-container {
+		padding: 30px;
+		max-width: 400px;
+	}
+
+	label {
+		font-size: 14px;
+	}
+
+	input,
+	select {
+		padding: 8px;
+		font-size: 14px;
+	}
+
+	input[type="submit"] {
+		padding: 8px 16px;
+		font-size: 14px;
+	}
+}
+
+/* Mobile (320px to 480px) */
+@media (min-width: 320px) and (max-width: 480px) {
+	.booking-form-section {
+		padding: 20px;
+	}
+
+	.booking-form-container {
+		padding: 20px;
+		max-width: 100%;
+	}
+
+	label {
+		font-size: 14px;
+	}
+
+	input,
+	select {
+		padding: 8px;
+		font-size: 14px;
+	}
+
+	input[type="submit"] {
+		padding: 8px 12px;
+		font-size: 14px;
+	}
+}
