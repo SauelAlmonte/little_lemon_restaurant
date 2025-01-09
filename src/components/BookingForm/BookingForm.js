@@ -1,24 +1,62 @@
 import React, { useState } from "react";
 import "./BookingForm.css";
-import ConfirmationModal from "../ConfirmationModal/ConfirmationModal"; // Import the modal
+import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
+import BookingSlot from "../BookingSlot/BookingSlot"; // Import BookingSlot
 
-function BookingForm() {
-	// State variables for form fields
+function BookingForm({
+	availableTimes,
+	dispatch,
+	bookedTimes,
+	setBookedTimes,
+}) {
 	const [date, setDate] = useState("");
 	const [time, setTime] = useState("");
 	const [guests, setGuests] = useState(1);
 	const [occasion, setOccasion] = useState("");
 	const [showModal, setShowModal] = useState(false); // Modal visibility state
 
-	// Available times for the time dropdown
-	const availableTimes = ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"];
-
 	// Handle form submission
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
+		// Validate that a date and time are selected
+		if (!date || !time) {
+			alert("Please select a valid date and time.");
+			return;
+		}
+
+		// Prevent duplicate bookings
+		if (bookedTimes.includes(time)) {
+			alert("This time slot is already booked. Please select another.");
+			return;
+		}
+
+		// Add the selected time to the global list of booked times
+		setBookedTimes((prev) => [...prev, time]);
+
+		// Dispatch action to update available times
+		dispatch({ type: "UPDATE_TIMES", payload: time });
+
 		// Display the modal upon successful submission
 		setShowModal(true);
+
+		// Reset form fields after submission
+		setDate("");
+		setTime("");
+		setGuests(1);
+		setOccasion("");
+	};
+
+	// Handle date change and dispatch the action
+	const handleDateChange = (e) => {
+		const selectedDate = e.target.value;
+		setDate(selectedDate);
+
+		// Clear selected time when the date changes
+		setTime("");
+
+		// Dispatch action to update availableTimes based on selectedDate
+		dispatch({ type: "UPDATE_TIMES", payload: selectedDate });
 	};
 
 	return (
@@ -31,7 +69,7 @@ function BookingForm() {
 							type="date"
 							id="res-date"
 							value={date}
-							onChange={(e) => setDate(e.target.value)}
+							onChange={handleDateChange}
 							required
 						/>
 
@@ -83,9 +121,25 @@ function BookingForm() {
 					</form>
 				</div>
 			</div>
+			<div className="booking-slots-section">
+				<h2>Available Booking Slots</h2>
+				<div className="booking-slots">
+					{availableTimes.map((time, index) => (
+						<BookingSlot
+							key={index}
+							time={time}
+							isBooked={bookedTimes.includes(time)} // Use global booked times
+						/>
+					))}
+				</div>
+			</div>
 
-			{/* Render the modal */}
-			<ConfirmationModal show={showModal} />
+			{/* Confirmation Modal */}
+			<ConfirmationModal show={showModal}>
+				<p>
+					Your reservation for {time} on {date} has been successfully made!
+				</p>
+			</ConfirmationModal>
 		</>
 	);
 }

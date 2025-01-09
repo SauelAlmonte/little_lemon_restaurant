@@ -2,23 +2,25 @@
 .about {
 	width: 100%;
 	background-color: var(--primary-green);
-	height: 100%;
+	height: 500px;
 }
 
 .about-container {
 	margin: 0 auto;
 	max-width: 1000px;
+	height: 100%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	gap: 40px;
-	padding: 60px 20px;
+	padding: 30px 20px;
 	color: var(--highlight-light);
 }
 
 .about header {
 	text-align: left;
 	width: 100%;
+	height: 100%;
+	padding: 15px 0;
 }
 
 header .about-header {
@@ -27,7 +29,7 @@ header .about-header {
 
 .about .about-container header .about-header h2 {
 	font-size: 2rem;
-	font-family: "Markazi Text", serif;
+	font-family: var(--font-headlines);
 	font-weight: 500;
 	color: var(--highlight-light);
 	margin-bottom: 10px;
@@ -35,62 +37,69 @@ header .about-header {
 
 .about .about-container header .about-header p {
 	font-size: 1.5rem;
-	font-family: "Karla", sans-serif;
+	font-family: var(--font-headlines);
 	font-weight: 400;
 	color: var(--primary-yellow);
 }
 
-/* Paragraph Styling */
-.about .about-paragraph {
+.about .about-container .about-paragraph {
+	width: 100%;
 	font-size: 1.2rem;
-	font-family: "Karla", sans-serif;
-	font-weight: 400;
-	line-height: 1.5;
+	font-family: var(--font-paragraphs);
+	font-weight: 300;
+	line-height: 1.2;
 	margin-bottom: 0;
 	color: var(--highlight-light);
 }
 
-/* Aside for Images */
 .about-images-container {
 	position: relative;
 	width: 100%;
+	height: 100%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
 
 .about-images-container img {
-	position: absolute;
-	width: 350px;
-	height: 350px;
+	position: relative;
+	width: 275px;
+	height: 275px;
 	border-radius: 12px;
 	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 	object-fit: cover;
+	top: 50px;
 }
 
-/* Specific positioning for overlapping effect */
 .about-images-container img:first-child {
-	left: -20px;
-	top: -150px;
+	right: -95px;
+	top: 75px;
 	z-index: 1;
 }
 
 .about-images-container img:last-child {
-	left: 125px;
-	top: -200px;
+	right: 95px;
+	top: -75px;
 	z-index: 2;
 }
 
-/* Responsive Adjustments */
+/* Tablet Devices */
 @media (max-width: 768px) {
 	.about {
+		height: 800px;
 		text-align: left;
 	}
 
 	.about-container {
+		display: flex;
 		flex-direction: column;
-		gap: 30px;
 		padding: 30px 75px;
+	}
+
+	.about .about-container header {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
 	}
 
 	.about .about-container header .about-header h2 {
@@ -123,23 +132,23 @@ header .about-header {
 		object-fit: cover;
 	}
 
-	/* Specific positioning for overlapping effect */
 	.about-images-container img:first-child {
-		left: 260px;
-		top: -375px;
+		left: 40px;
+		top: 50px;
 		z-index: 1;
 	}
 
 	.about-images-container img:last-child {
-		left: 300px;
-		top: -500px;
+		left: 250px;
+		top: 0;
 		z-index: 2;
 	}
 }
 
-@media (max-width: 480px) {
+/* Mobile Devices */
+@media (max-width: 480px) and (min-width: 320px) {
 	.about {
-		height: 750px;
+		height: 850px;
 		padding: 0;
 		margin: 0;
 	}
@@ -147,30 +156,32 @@ header .about-header {
 	.about-container {
 		display: flex;
 		flex-direction: column;
-		height: 100%;
-		gap: 20px;
-		padding: 16px 16px;
+		width: 100%;
+		height: auto;
+		padding: 16px;
 	}
 
-	.about .about-container header {
+	.about-container header {
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
 		width: 100%;
 		height: 100%;
 		position: relative;
 	}
 
-	.about .about-paragraph {
+	.about-container header .about-paragraph {
 		font-size: 1rem;
 		width: 100%;
 	}
 
 	.about-images-container {
 		position: relative;
-		margin: 16px;
+		display: flex;
+		flex-direction: column;
+		margin: 16px 0;
 		width: 100%;
 		height: 100%;
-		display: flex;
-		justify-content: center;
-		align-content: center;
 	}
 
 	.about-images-container img {
@@ -183,14 +194,14 @@ header .about-header {
 	}
 
 	.about-images-container img:first-child {
-		left: 30px;
-		top: 40px;
+		left: 20px;
+		top: 100px;
 		z-index: 1;
 	}
 
 	.about-images-container img:last-child {
-		left: 100px;
-		top: 0px;
+		left: 110px;
+		top: 0;
 		z-index: 2;
 	}
 }

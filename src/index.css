@@ -16,6 +16,17 @@
 	/* Font Families */
 	--font-headlines: "Markazi Text", serif; /* For headlines */
 	--font-paragraphs: "Karla", sans-serif; /* For paragraphs */
+
+	/* Booking Slot Variables */
+	--slot-padding: 10px;
+	--slot-margin: 5px;
+	--slot-border-color: #ccc;
+	--slot-border-radius: 5px;
+	--slot-font-size: 16px;
+	--slot-booked-bg: #f8d7da;
+	--slot-booked-color: #721c24;
+	--slot-available-bg: #d4edda;
+	--slot-available-color: #155724;
 }
 
 /* Global font styles */
@@ -24,14 +35,14 @@ body {
 	margin: 0;
 	padding: 0;
 	font-family: var(--font-paragraphs), sans-serif; /* Default for paragraphs with fallback */
-	-webkit-font-smoothing: antialiased;
+	/* -webkit-font-smoothing: antialiased; */
 	-moz-osx-font-smoothing: grayscale;
 	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
 	color: var(--highlight-dark);
-	overflow-x: hidden; /* Prevent horizontal scrolling */
-	line-height: 1.6; /* Default line height for readability */
+	/* overflow-x: hidden;  */
+	line-height: 1.2; /* Default line height for readability */
 	font-size: 16px; /* Base font size */
 }
 
@@ -74,10 +85,10 @@ ol {
 }
 
 /* Accessibility: Focus outline */
-:focus {
+/* :focus {
 	outline: 2px solid var(--primary-yellow);
 	outline-offset: 2px;
-}
+} */
 
 /* Support reduced motion preferences */
 @media (prefers-reduced-motion: reduce) {
