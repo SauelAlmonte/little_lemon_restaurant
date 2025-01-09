@@ -1,37 +1,68 @@
-import React, { useState } from "react";
+/* global fetchAPI */
+import React, { useState, useEffect } from "react";
 import "./BookingForm.css";
 import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
-import BookingSlot from "../BookingSlot/BookingSlot"; // Import BookingSlot
+import BookingSlot from "../BookingSlot/BookingSlot";
 
 function BookingForm({ availableTimes, dispatch }) {
 	const [date, setDate] = useState("");
 	const [time, setTime] = useState("");
 	const [guests, setGuests] = useState(1);
 	const [occasion, setOccasion] = useState("");
-	const [showModal, setShowModal] = useState(false); // Modal visibility state
-	const [bookedTimes, setBookedTimes] = useState([]); // State for booked times
+	const [showModal, setShowModal] = useState(false);
+	const [bookedTimes, setBookedTimes] = useState([]);
 
-	// Handle form submission
-	const handleSubmit = (e) => {
-		e.preventDefault();
+	// Load booked times from local storage on initialization
+	useEffect(() => {
+		const savedBookedTimes =
+			JSON.parse(localStorage.getItem("bookedTimes")) || [];
+		setBookedTimes(savedBookedTimes);
+	}, []);
 
-		// Add the selected time to the list of booked times
-		setBookedTimes((prev) => [...prev, time]);
+	// Initialize times using fetchAPI
+	useEffect(() => {
+		console.log(typeof fetchAPI); // Should log "function"
 
-		// Dispatch action to mark the selected time as booked
-		dispatch({ type: "UPDATE_TIMES", payload: time });
+		const today = new Date(); // Use a proper Date object
 
-		// Display the modal upon successful submission
-		setShowModal(true);
+		// Use async/await to handle promise from fetchAPI
+		const fetchTimes = async () => {
+			try {
+				const initialTimes = await fetchAPI(today); // Await the fetch result
+				dispatch({ type: "UPDATE_TIMES", payload: initialTimes }); // Dispatch times to state
+			} catch (error) {
+				console.error("Error fetching times:", error);
+			}
+		};
+
+		fetchTimes();
+	}, [dispatch]);
+
+	// Handle date change and fetch new available times
+	const handleDateChange = async (e) => {
+		const selectedDateString = e.target.value; // Get the date string
+		const selectedDate = new Date(selectedDateString); // Convert string to Date object
+		setDate(selectedDateString); // Set the string for display purposes
+
+		try {
+			const updatedTimes = await fetchAPI(selectedDate); // Await the fetch result
+			dispatch({ type: "UPDATE_TIMES", payload: updatedTimes }); // Dispatch updated times
+		} catch (error) {
+			console.error("Error fetching updated times:", error);
+		}
 	};
 
-	// Handle date change and dispatch the action
-	const handleDateChange = (e) => {
-		const selectedDate = e.target.value;
-		setDate(selectedDate);
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		const updatedBookedTimes = [...bookedTimes, time];
 
-		// Dispatch action to update availableTimes based on selectedDate
-		dispatch({ type: "UPDATE_TIMES", payload: selectedDate });
+		// Update state and local storage with the new booking
+		setBookedTimes(updatedBookedTimes);
+		localStorage.setItem("bookedTimes", JSON.stringify(updatedBookedTimes));
+
+		// Dispatch to update state and show confirmation modal
+		dispatch({ type: "UPDATE_TIMES", payload: time });
+		setShowModal(true);
 	};
 
 	return (
@@ -47,7 +78,6 @@ function BookingForm({ availableTimes, dispatch }) {
 							onChange={handleDateChange}
 							required
 						/>
-
 						<label htmlFor="res-time">Choose time</label>
 						<select
 							id="res-time"
@@ -59,12 +89,15 @@ function BookingForm({ availableTimes, dispatch }) {
 								Select time
 							</option>
 							{availableTimes.map((availableTime, index) => (
-								<option key={index} value={availableTime}>
+								<option
+									key={index}
+									value={availableTime}
+									disabled={bookedTimes.includes(availableTime)} // Disable booked times
+								>
 									{availableTime}
 								</option>
 							))}
 						</select>
-
 						<label htmlFor="guests">Number of guests</label>
 						<input
 							type="number"
@@ -76,7 +109,6 @@ function BookingForm({ availableTimes, dispatch }) {
 							onChange={(e) => setGuests(parseInt(e.target.value) || 1)}
 							required
 						/>
-
 						<label htmlFor="occasion">Occasion</label>
 						<select
 							id="occasion"
@@ -91,25 +123,23 @@ function BookingForm({ availableTimes, dispatch }) {
 							<option value="Anniversary">Anniversary</option>
 							<option value="Engagement">Engagement</option>
 						</select>
-
 						<input type="submit" value="Make Your Reservation" />
 					</form>
 				</div>
 			</div>
 			<div className="booking-slots-section">
-					<h2>Available Booking Slots</h2>
-					<div className="booking-slots">
-						{availableTimes.map((time, index) => (
-							<BookingSlot
-								key={index}
-								time={time}
-								isBooked={bookedTimes.includes(time)} // Correct logic
-							/>
-						))}
-					</div>
+				<h2>Available Booking Slots</h2>
+				<div className="booking-slots">
+					{availableTimes.map((time, index) => (
+						<BookingSlot
+							key={index}
+							time={time}
+							isBooked={bookedTimes.includes(time)}
+						/>
+					))}
 				</div>
-
-				<ConfirmationModal show={showModal} />
+			</div>
+			<ConfirmationModal show={showModal} />
 		</>
 	);
 }
