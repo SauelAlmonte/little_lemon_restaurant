@@ -1,0 +1,90 @@
+.confirmation-page-container {
+	text-align: center;
+	margin: 20px auto;
+	padding: 20px;
+	max-width: 600px;
+	border: 1px solid var(--highlight-dark);
+	box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+	border-radius: 8px;
+	color: var(--highlight-dark);
+}
+
+.confirmation-image {
+	margin: 20px 0;
+	width: 100%;
+	max-width: 150px; /* Ensure responsiveness */
+	height: auto; /* Maintain aspect ratio */
+}
+
+.booking-details {
+	text-align: left; /* Align text to the left for readability */
+	margin: 20px auto;
+	padding: 10px;
+	background-color: var(--highlight-light);
+	border: 1px solid var(--slot-border-color); /* Match the slot border style */
+	border-radius: 5px;
+	max-width: 500px;
+	font-size: 16px;
+	line-height: 1.5;
+}
+
+.booking-details p {
+	margin: 10px 0;
+}
+
+.confirmation-image-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	row-gap: 20px;
+}
+
+.home-button {
+	background-color: var(--primary-green); /* Use consistent color scheme */
+	color: white;
+	border: none;
+	padding: 10px 20px;
+	font-size: 16px;
+	cursor: pointer;
+	border-radius: 5px;
+	transition: background-color 0.3s ease;
+}
+
+.home-button:hover {
+	background-color: #45a049; /* Subtle hover effect */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+	.confirmation-page-container {
+		padding: 15px;
+		margin: 15px auto;
+	}
+
+	.booking-details {
+		padding: 8px;
+		font-size: 14px;
+	}
+
+	.home-button {
+		padding: 8px 16px;
+		font-size: 14px;
+	}
+}
+
+@media (max-width: 480px) {
+	.confirmation-page-container {
+		padding: 10px;
+		margin: 10px auto;
+	}
+
+	.booking-details {
+		font-size: 13px;
+	}
+
+	.home-button {
+		padding: 8px 12px;
+		font-size: 13px;
+	}
+}

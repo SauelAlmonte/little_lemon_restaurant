@@ -4,12 +4,13 @@ import "./BookingForm.css";
 import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
 import BookingSlot from "../BookingSlot/BookingSlot";
 
-function BookingForm({ availableTimes, dispatch }) {
+function BookingForm({ availableTimes, dispatch, submitForm }) {
 	const [date, setDate] = useState("");
 	const [time, setTime] = useState("");
 	const [guests, setGuests] = useState(1);
 	const [occasion, setOccasion] = useState("");
 	const [showModal, setShowModal] = useState(false);
+	const [reservationDetails, setReservationDetails] = useState(null); // Store reservation details
 	const [bookedTimes, setBookedTimes] = useState([]);
 
 	// Load booked times from local storage on initialization
@@ -48,20 +49,28 @@ function BookingForm({ availableTimes, dispatch }) {
 	};
 
 	// Handle form submission
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
 
 		// Create booking object with all details
 		const newBooking = { date, time, guests, occasion };
 
-		// Update state and local storage
-		const updatedBookedTimes = [...bookedTimes, newBooking];
-		setBookedTimes(updatedBookedTimes);
-		localStorage.setItem("bookedTimes", JSON.stringify(updatedBookedTimes));
+		// Call submitForm and handle success
+		const isSuccessful = await submitForm(newBooking);
+		if (isSuccessful) {
+			// Save reservation details for ConfirmedBooking
+			setReservationDetails(newBooking);
 
-		// Dispatch and show confirmation modal
-		dispatch({ type: "UPDATE_TIMES", payload: time });
-		setShowModal(true);
+			// Update state and local storage
+			const updatedBookedTimes = [...bookedTimes, newBooking];
+			setBookedTimes(updatedBookedTimes);
+			localStorage.setItem("bookedTimes", JSON.stringify(updatedBookedTimes));
+
+			// Show confirmation modal
+			setShowModal(true);
+		} else {
+			alert("Failed to submit booking. Please try again.");
+		}
 	};
 
 	return (
@@ -145,7 +154,10 @@ function BookingForm({ availableTimes, dispatch }) {
 					))}
 				</div>
 			</div>
-			<ConfirmationModal show={showModal} />
+			<ConfirmationModal
+				show={showModal}
+				bookingDetails={{ date, time, occasion }}
+			/>
 		</>
 	);
 }

@@ -1,13 +1,13 @@
 import React, { useReducer, useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom"; // Import useNavigate
 import Hero from "../Hero/Hero";
 import Specials from "../Specials/Specials";
 import Testimonials from "../Testimonials/Testimonials";
 import About from "../About/About";
 import BookingForm from "../BookingForm/BookingForm";
+import ConfirmedBooking from "../ConfirmedBooking/ConfirmedBooking"; // Import ConfirmedBooking
 
 // Reducer function for availableTimes
-// Exporting the reducer functions for testing
 export const updateTimes = (state, action) => {
 	switch (action.type) {
 		case "UPDATE_TIMES":
@@ -33,6 +33,21 @@ function Main() {
 	// Global state for booked times
 	const [bookedTimes, setBookedTimes] = useState([]);
 
+	const navigate = useNavigate(); // Initialize navigate function
+
+	// Step 2: Set up the submitForm function
+	const submitForm = async (formData) => {
+		console.log("Submitting form data:", formData);
+		try {
+			const response = await submitAPI(formData);
+			console.log("API Response:", response);
+			return response; // Returns true or false
+		} catch (error) {
+			console.error("Error in submitForm:", error);
+			return false;
+		}
+	};
+
 	return (
 		<main>
 			<Routes>
@@ -54,10 +69,12 @@ function Main() {
 							availableTimes={availableTimes}
 							dispatch={dispatch}
 							bookedTimes={bookedTimes}
-							setBookedTimes={setBookedTimes} // Pass down bookedTimes and setter
+							setBookedTimes={setBookedTimes}
+							submitForm={submitForm} // Pass submitForm to BookingForm
 						/>
 					}
 				/>
+				<Route path="/confirmation" element={<ConfirmedBooking />} />
 			</Routes>
 		</main>
 	);
