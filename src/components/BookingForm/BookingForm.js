@@ -21,46 +21,45 @@ function BookingForm({ availableTimes, dispatch }) {
 
 	// Initialize times using fetchAPI
 	useEffect(() => {
-		console.log(typeof fetchAPI); // Should log "function"
-
-		const today = new Date(); // Use a proper Date object
-
-		// Use async/await to handle promise from fetchAPI
+		const today = new Date();
 		const fetchTimes = async () => {
 			try {
-				const initialTimes = await fetchAPI(today); // Await the fetch result
-				dispatch({ type: "UPDATE_TIMES", payload: initialTimes }); // Dispatch times to state
+				const initialTimes = await fetchAPI(today);
+				dispatch({ type: "UPDATE_TIMES", payload: initialTimes });
 			} catch (error) {
 				console.error("Error fetching times:", error);
 			}
 		};
-
 		fetchTimes();
 	}, [dispatch]);
 
 	// Handle date change and fetch new available times
 	const handleDateChange = async (e) => {
-		const selectedDateString = e.target.value; // Get the date string
-		const selectedDate = new Date(selectedDateString); // Convert string to Date object
-		setDate(selectedDateString); // Set the string for display purposes
+		const selectedDateString = e.target.value;
+		const selectedDate = new Date(selectedDateString);
+		setDate(selectedDateString);
 
 		try {
-			const updatedTimes = await fetchAPI(selectedDate); // Await the fetch result
-			dispatch({ type: "UPDATE_TIMES", payload: updatedTimes }); // Dispatch updated times
+			const updatedTimes = await fetchAPI(selectedDate);
+			dispatch({ type: "UPDATE_TIMES", payload: updatedTimes });
 		} catch (error) {
 			console.error("Error fetching updated times:", error);
 		}
 	};
 
+	// Handle form submission
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		const updatedBookedTimes = [...bookedTimes, time];
 
-		// Update state and local storage with the new booking
+		// Create booking object with all details
+		const newBooking = { date, time, guests, occasion };
+
+		// Update state and local storage
+		const updatedBookedTimes = [...bookedTimes, newBooking];
 		setBookedTimes(updatedBookedTimes);
 		localStorage.setItem("bookedTimes", JSON.stringify(updatedBookedTimes));
 
-		// Dispatch to update state and show confirmation modal
+		// Dispatch and show confirmation modal
 		dispatch({ type: "UPDATE_TIMES", payload: time });
 		setShowModal(true);
 	};
@@ -92,7 +91,9 @@ function BookingForm({ availableTimes, dispatch }) {
 								<option
 									key={index}
 									value={availableTime}
-									disabled={bookedTimes.includes(availableTime)} // Disable booked times
+									disabled={bookedTimes.some(
+										(booking) => booking.date === date && booking.time === availableTime
+									)}
 								>
 									{availableTime}
 								</option>
@@ -130,11 +131,16 @@ function BookingForm({ availableTimes, dispatch }) {
 			<div className="booking-slots-section">
 				<h2>Available Booking Slots</h2>
 				<div className="booking-slots">
-					{availableTimes.map((time, index) => (
+					{availableTimes.map((availableTime, index) => (
 						<BookingSlot
 							key={index}
-							time={time}
-							isBooked={bookedTimes.includes(time)}
+							time={availableTime}
+							isBooked={bookedTimes.some(
+								(booking) => booking.date === date && booking.time === availableTime
+							)}
+							bookingDetails={bookedTimes.find(
+								(booking) => booking.date === date && booking.time === availableTime
+							)} // Pass booking details if booked
 						/>
 					))}
 				</div>

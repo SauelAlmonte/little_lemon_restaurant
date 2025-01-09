@@ -5,20 +5,52 @@
 	border-radius: var(--slot-border-radius);
 	display: flex;
 	justify-content: space-between;
-	align-items: center;
+	/* align-items: center; */
 	font-size: var(--slot-font-size);
+	flex-direction: column; /* Allow content to stack vertically */
 }
 
 .booking-slot.booked {
 	background-color: var(--slot-booked-bg);
 	color: var(--slot-booked-color);
+	cursor: not-allowed; /* Disable hover for booked slots */
 }
 
 .booking-slot.available {
 	background-color: var(--slot-available-bg);
 	color: var(--slot-available-color);
+	cursor: pointer;
 }
 
 .status {
 	font-weight: bold;
+}
+
+.time-container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.time {
+	width: 100%;
+}
+
+.booking-details {
+	display: flex;
+	justify-content: space-around;
+	width: 100%;
+	/* margin-top: 5px; */
+	font-size: 0.9em; /* Slightly smaller font for details */
+	color: var(
+		--slot-details-color
+	); /* Add a CSS variable for details text color */
+	text-align: center; /* Center align details */
+}
+
+.booking-details span {
+	text-align: right;
+	/* display: flex;
+	flex-direction: row; */
+	/* display: block; */
 }
