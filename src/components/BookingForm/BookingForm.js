@@ -3,57 +3,32 @@ import "./BookingForm.css";
 import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
 import BookingSlot from "../BookingSlot/BookingSlot"; // Import BookingSlot
 
-function BookingForm({
-	availableTimes,
-	dispatch,
-	bookedTimes,
-	setBookedTimes,
-}) {
+function BookingForm({ availableTimes, dispatch }) {
 	const [date, setDate] = useState("");
 	const [time, setTime] = useState("");
 	const [guests, setGuests] = useState(1);
 	const [occasion, setOccasion] = useState("");
 	const [showModal, setShowModal] = useState(false); // Modal visibility state
+	const [bookedTimes, setBookedTimes] = useState([]); // State for booked times
 
 	// Handle form submission
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
-		// Validate that a date and time are selected
-		if (!date || !time) {
-			alert("Please select a valid date and time.");
-			return;
-		}
-
-		// Prevent duplicate bookings
-		if (bookedTimes.includes(time)) {
-			alert("This time slot is already booked. Please select another.");
-			return;
-		}
-
-		// Add the selected time to the global list of booked times
+		// Add the selected time to the list of booked times
 		setBookedTimes((prev) => [...prev, time]);
 
-		// Dispatch action to update available times
+		// Dispatch action to mark the selected time as booked
 		dispatch({ type: "UPDATE_TIMES", payload: time });
 
 		// Display the modal upon successful submission
 		setShowModal(true);
-
-		// Reset form fields after submission
-		setDate("");
-		setTime("");
-		setGuests(1);
-		setOccasion("");
 	};
 
 	// Handle date change and dispatch the action
 	const handleDateChange = (e) => {
 		const selectedDate = e.target.value;
 		setDate(selectedDate);
-
-		// Clear selected time when the date changes
-		setTime("");
 
 		// Dispatch action to update availableTimes based on selectedDate
 		dispatch({ type: "UPDATE_TIMES", payload: selectedDate });
@@ -122,24 +97,19 @@ function BookingForm({
 				</div>
 			</div>
 			<div className="booking-slots-section">
-				<h2>Available Booking Slots</h2>
-				<div className="booking-slots">
-					{availableTimes.map((time, index) => (
-						<BookingSlot
-							key={index}
-							time={time}
-							isBooked={bookedTimes.includes(time)} // Use global booked times
-						/>
-					))}
+					<h2>Available Booking Slots</h2>
+					<div className="booking-slots">
+						{availableTimes.map((time, index) => (
+							<BookingSlot
+								key={index}
+								time={time}
+								isBooked={bookedTimes.includes(time)} // Correct logic
+							/>
+						))}
+					</div>
 				</div>
-			</div>
 
-			{/* Confirmation Modal */}
-			<ConfirmationModal show={showModal}>
-				<p>
-					Your reservation for {time} on {date} has been successfully made!
-				</p>
-			</ConfirmationModal>
+				<ConfirmationModal show={showModal} />
 		</>
 	);
 }

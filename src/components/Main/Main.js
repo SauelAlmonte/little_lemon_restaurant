@@ -7,7 +7,8 @@ import About from "../About/About";
 import BookingForm from "../BookingForm/BookingForm";
 
 // Reducer function for availableTimes
-const updateTimes = (state, action) => {
+// Exporting the reducer functions for testing
+export const updateTimes = (state, action) => {
 	switch (action.type) {
 		case "UPDATE_TIMES":
 			// Ensure times are plain strings, not objects
@@ -17,7 +18,7 @@ const updateTimes = (state, action) => {
 	}
 };
 
-const initializeTimes = () => {
+export const initializeTimes = () => {
 	return ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"]; // Plain strings
 };
 

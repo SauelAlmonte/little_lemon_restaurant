@@ -1,8 +1,13 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { render } from "@testing-library/react";
+import { MemoryRouter, Routes, Route } from "react-router-dom";
+import Main from "./components/Main/Main";
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+test("renders Main component for root path /", () => {
+	render(
+		<MemoryRouter initialEntries={["/"]}>
+			<Routes>
+				<Route path="*" element={<Main />} /> {/* Add * to parent path */}
+			</Routes>
+		</MemoryRouter>
+	);
 });
