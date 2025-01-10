@@ -59,9 +59,7 @@ Little Lemon is a family-owned Mediterranean restaurant located in the heart of 
 1. **Clone the Repository**:
 
    ```bash
-   git clone https://github.com/your-username/little-lemon.git
-   cd little-lemon
-
+   git clone https://github.com/SauelAlmonte/little_lemon_restaurant.git
    ```
 
 2. **Install Dependencies**:
