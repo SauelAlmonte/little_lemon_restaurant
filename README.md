@@ -90,8 +90,6 @@ For detailed guidelines, refer to [Web Content Accessibility Guidelines (WCAG)](
 ## Contributors
 
 - **Sauel Almonte** - Lead Developer
-- **Collaborator's Name** - Designer
-- **Collaborator's Name** - Accessibility Consultant
 
 Feel free to contribute to the project by submitting issues or pull requests!
 
