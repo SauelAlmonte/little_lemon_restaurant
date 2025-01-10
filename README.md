@@ -1,70 +1,114 @@
-# Getting Started with Create React App
+# Little Lemon Restaurant - Reserve a Table Web App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to the Little Lemon Restaurant reserve-a-table web application! This project allows users to explore Little Lemon's offerings, view weekly specials, book a table, and more, all through a user-friendly and accessible interface.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## Table of Contents
 
-### `npm start`
+- [Little Lemon Restaurant - Reserve a Table Web App](#little-lemon-restaurant---reserve-a-table-web-app)
+  - [Table of Contents](#table-of-contents)
+  - [Overview](#overview)
+  - [Features](#features)
+  - [Technologies Used](#technologies-used)
+  - [Setup Instructions](#setup-instructions)
+  - [Accessibility](#accessibility)
+  - [Contributors](#contributors)
+  - [License](#license)
+  - [Acknowledgments](#acknowledgments)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Overview
 
-### `npm test`
+Little Lemon is a family-owned Mediterranean restaurant located in the heart of Chicago. This web application serves as an online platform to provide:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Seamless table reservation functionality.
+- Details about the restaurant, including its menu and location.
+- Testimonials from happy customers.
+- An engaging, accessible, and user-friendly interface.
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Features
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **Responsive Design**: Optimized for desktop, tablet, and mobile devices.
+- **Accessible Navigation**: Designed to meet WCAG standards with proper ARIA attributes and semantic HTML.
+- **Table Booking**: Users can easily reserve a table by selecting a date, time, number of guests, and occasion.
+- **Dynamic Booking Slots**: Real-time availability of booking slots.
+- **Weekly Specials**: Showcase the restaurant's featured dishes of the week.
+- **Testimonials Section**: Highlights reviews from satisfied customers.
+- **Confirmation Modal**: Provides a clear confirmation of successful bookings.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## Technologies Used
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- **Frontend**: React.js
+- **Styling**: CSS (with responsive design principles)
+- **Routing**: React Router
+- **Testing**: React Testing Library, Jest
+- **API Integration**: Custom `fetchAPI` and `submitAPI` functions
+- **State Management**: React Hooks (useState, useReducer, useEffect)
+- **Accessibility Enhancements**: ARIA attributes, semantic HTML
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Setup Instructions
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+1. **Clone the Repository**:
 
-## Learn More
+   ```bash
+   git clone https://github.com/your-username/little-lemon.git
+   cd little-lemon
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+   ```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+2. **Install Dependencies**:
+   npm install
 
-### Code Splitting
+3. **Start the Development Server**:
+   npm start
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+4. **Run Tests**:
+   npm test
 
-### Analyzing the Bundle Size
+5. **Build the Application**:
+   npm run build
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Accessibility
 
-### Making a Progressive Web App
+The Little Lemon reserve-a-table web app adheres to the following accessibility standards:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- Use of semantic HTML elements like `<header>`, `<main>`, and `<section>`.
+- ARIA attributes such as `aria-label` and `aria-describedby` for enhanced screen reader compatibility.
+- Keyboard navigation supported throughout the site.
+- Error messages and interactive elements announced dynamically for screen readers.
 
-### Advanced Configuration
+For detailed guidelines, refer to [Web Content Accessibility Guidelines (WCAG)](https://www.w3.org/WAI/standards-guidelines/wcag/).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+---
 
-### Deployment
+## Contributors
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- **Sauel Almonte** - Lead Developer
+- **Collaborator's Name** - Designer
+- **Collaborator's Name** - Accessibility Consultant
 
-### `npm run build` fails to minify
+Feel free to contribute to the project by submitting issues or pull requests!
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
+
+## License
+
+This project is licensed under the MIT License. You are free to use, modify, and distribute the project under the terms of the license.
+
+---
+
+## Acknowledgments
+
+- **React**: For the amazing library that powers the frontend.
+- **Coursera**: For providing the capstone project template.
+- **Inspiration**: To the real Little Lemon restaurant concept.
+
+Thank you for exploring the Little Lemon Restaurant web application! 🍋
