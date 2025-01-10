@@ -77,6 +77,35 @@ input::placeholder {
 	font-style: italic;
 }
 
+/* Validation Styling */
+/* Validation Styling */
+.error-message {
+	color: var(--error-red); /* Bright red for error messages */
+	font-size: 0.9rem;
+	font-family: var(--font-paragraphs);
+	margin-top: -10px;
+	margin-bottom: 10px;
+}
+
+input.error,
+select.error {
+	border: 3px solid var(--error-red); /* Bright red filled border for errors */
+	background-color: rgba(
+		238,
+		75,
+		43,
+		0.1
+	); /* Light red background to highlight error fields */
+	box-shadow: none; /* Remove shadow for a clean, filled border look */
+}
+
+input.error:focus,
+select.error:focus {
+	outline: 3px solid var(--error-red); /* Bright red outline for focused error fields */
+	background-color: rgba(238, 75, 43, 0.15); /* Slightly darker red on focus */
+}
+
+/* Booking Slots Section */
 .booking-slots-section {
 	display: flex;
 	flex-direction: column;
@@ -89,7 +118,7 @@ input::placeholder {
 .booking-slots-section h2 {
 	font-size: 1.5rem;
 	font-family: var(--font-headlines);
-	font-weight: 700px;
+	font-weight: 700;
 }
 
 /* Responsive Design */

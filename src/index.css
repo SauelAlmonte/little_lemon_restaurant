@@ -12,6 +12,7 @@
 	--secondary-orange: #ee9972;
 	--highlight-light: #fdefee;
 	--highlight-dark: #333333;
+	--error-red: #ee4b2b; /* Bright red for error styling */
 
 	/* Font Families */
 	--font-headlines: "Markazi Text", serif; /* For headlines */

@@ -8,11 +8,12 @@ import { fetchAPI } from "../../utils/fetchAPI";
 function BookingForm({ availableTimes, dispatch, submitForm }) {
 	const [date, setDate] = useState("");
 	const [time, setTime] = useState("");
-	const [guests, setGuests] = useState(1);
+	const [guests, setGuests] = useState(0);
 	const [occasion, setOccasion] = useState("");
 	const [showModal, setShowModal] = useState(false);
-	const [reservationDetails, setReservationDetails] = useState(null); // Store reservation details
+	const [reservationDetails, setReservationDetails] = useState(null);
 	const [bookedTimes, setBookedTimes] = useState([]);
+	const [errors, setErrors] = useState({}); // Track errors
 
 	// Load booked times from local storage on initialization
 	useEffect(() => {
@@ -35,39 +36,34 @@ function BookingForm({ availableTimes, dispatch, submitForm }) {
 		fetchTimes();
 	}, [dispatch]);
 
-	// Handle date change and fetch new available times
-	const handleDateChange = async (e) => {
-		const selectedDateString = e.target.value;
-		const selectedDate = new Date(selectedDateString);
-		setDate(selectedDateString);
-
-		try {
-			const updatedTimes = await fetchAPI(selectedDate);
-			dispatch({ type: "UPDATE_TIMES", payload: updatedTimes });
-		} catch (error) {
-			console.error("Error fetching updated times:", error);
-		}
+	// Validate inputs on form submission
+	const validateForm = () => {
+		const newErrors = {};
+		if (!date) newErrors.date = "Please select a date. *";
+		if (!time) newErrors.time = "Please select a time. *";
+		if (!guests || guests < 1 || guests > 10)
+			newErrors.guests = "Number of guests must be between 1 and 10. *";
+		if (!occasion) newErrors.occasion = "Please select an occasion. *";
+		setErrors(newErrors);
+		return Object.keys(newErrors).length === 0; // Return true if no errors
 	};
 
 	// Handle form submission
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
-		// Create booking object with all details
+		if (!validateForm()) {
+			return; // Stop submission if validation fails
+		}
+
 		const newBooking = { date, time, guests, occasion };
 
-		// Call submitForm and handle success
 		const isSuccessful = await submitForm(newBooking);
 		if (isSuccessful) {
-			// Save reservation details for ConfirmedBooking
 			setReservationDetails(newBooking);
-
-			// Update state and local storage
 			const updatedBookedTimes = [...bookedTimes, newBooking];
 			setBookedTimes(updatedBookedTimes);
 			localStorage.setItem("bookedTimes", JSON.stringify(updatedBookedTimes));
-
-			// Show confirmation modal
 			setShowModal(true);
 		} else {
 			alert("Failed to submit booking. Please try again.");
@@ -78,21 +74,21 @@ function BookingForm({ availableTimes, dispatch, submitForm }) {
 		<>
 			<div className="booking-form-section">
 				<div className="booking-form-container">
-					<form onSubmit={handleSubmit} className="booking-form">
+					<form onSubmit={handleSubmit} className="booking-form" noValidate>
 						<label htmlFor="res-date">Choose date</label>
 						<input
 							type="date"
 							id="res-date"
 							value={date}
-							onChange={handleDateChange}
-							required
+							onChange={(e) => setDate(e.target.value)}
 						/>
+						{errors.date && <p className="error-message">{errors.date}</p>}
+
 						<label htmlFor="res-time">Choose time</label>
 						<select
 							id="res-time"
 							value={time}
 							onChange={(e) => setTime(e.target.value)}
-							required
 						>
 							<option value="" disabled>
 								Select time
@@ -109,23 +105,25 @@ function BookingForm({ availableTimes, dispatch, submitForm }) {
 								</option>
 							))}
 						</select>
+						{errors.time && <p className="error-message">{errors.time}</p>}
+
 						<label htmlFor="guests">Number of guests</label>
 						<input
 							type="number"
 							id="guests"
-							placeholder="1"
+							placeholder="0"
 							min="1"
 							max="10"
 							value={guests}
 							onChange={(e) => setGuests(parseInt(e.target.value) || 1)}
-							required
 						/>
+						{errors.guests && <p className="error-message">{errors.guests}</p>}
+
 						<label htmlFor="occasion">Occasion</label>
 						<select
 							id="occasion"
 							value={occasion}
 							onChange={(e) => setOccasion(e.target.value)}
-							required
 						>
 							<option value="" disabled>
 								Select occasion
@@ -134,6 +132,8 @@ function BookingForm({ availableTimes, dispatch, submitForm }) {
 							<option value="Anniversary">Anniversary</option>
 							<option value="Engagement">Engagement</option>
 						</select>
+						{errors.occasion && <p className="error-message">{errors.occasion}</p>}
+
 						<input type="submit" value="Make Your Reservation" />
 					</form>
 				</div>

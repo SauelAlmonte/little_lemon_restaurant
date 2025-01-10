@@ -64,7 +64,35 @@
 	font-size: 1rem;
 	font-family: var(--font-paragraphs);
 	color: var(--highlight-dark);
-	margin: 0;
+	margin-bottom: 10px;
+}
+
+.modal-actions {
+	display: flex;
+	justify-content: center; /* Center the button horizontally */
+	width: 100%;
+}
+
+.modal-button {
+	background-color: var(--primary-yellow);
+	color: var(--highlight-dark);
+	font-family: var(--font-paragraphs);
+	font-size: 1rem;
+	border: none;
+	border-radius: 5px;
+	padding: 12px 24px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+	width: 100%; /* Ensure button takes full width on mobile screens */
+}
+
+.modal-button:hover {
+	background-color: var(--secondary-orange); /* Change background on hover */
+}
+
+.modal-button:focus {
+	outline: 2px solid var(--primary-yellow); /* Add focus outline */
+	outline-offset: 4px;
 }
 
 /* Responsive Adjustments */
@@ -74,8 +102,8 @@
 		padding: 15px;
 	}
 
-	.modal-content{
-		padding: 40px
+	.modal-content {
+		padding: 40px;
 	}
 
 	.modal-content h2 {
@@ -89,6 +117,11 @@
 	.modal-content .modal-icon {
 		width: 70px;
 		height: 70px;
+	}
+
+	.modal-actions {
+		width: 90%;
+		margin-top: 20px;
 	}
 }
 
@@ -109,5 +142,14 @@
 	.modal-content .modal-icon {
 		width: 60px;
 		height: 60px;
+	}
+
+	.modal-actions {
+		width: 100%;
+	}
+
+	.modal-button {
+		font-size: 0.9rem;
+		padding: 10px 20px;
 	}
 }
