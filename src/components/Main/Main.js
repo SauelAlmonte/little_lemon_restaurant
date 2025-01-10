@@ -40,16 +40,21 @@ function Main() {
 		console.log("Submitting form data:", formData);
 		try {
 			const response = await submitAPI(formData);
-			console.log("API Response:", response);
+			if (response) {
+				navigate("/confirmation"); // Navigate to confirmation page on success
+			} else {
+				alert("Error: Unable to submit your reservation. Please try again.");
+			}
 			return response; // Returns true or false
 		} catch (error) {
 			console.error("Error in submitForm:", error);
+			alert("An unexpected error occurred. Please try again later.");
 			return false;
 		}
 	};
 
 	return (
-		<main>
+		<main aria-label="Main content">
 			<Routes>
 				<Route
 					path="/"

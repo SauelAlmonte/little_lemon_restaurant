@@ -1,6 +1,6 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import BookingForm from "./BookingForm";
-import fetchAPI from "../../utils/fetchAPI"; // Importing everything from fetchAPI
+import fetchAPI from "../../utils/fetchAPI";
 
 // Mock fetchAPI to avoid network requests during testing
 jest.mock("../../utils/fetchAPI", () => ({
@@ -39,7 +39,7 @@ test("renders BookingForm correctly", () => {
 	expect(occasionSelect).toBeInTheDocument();
 
 	const submitButton = screen.getByRole("button", {
-		name: /make your reservation/i,
+		name: /submit reservation form/i,
 	});
 	expect(submitButton).toBeInTheDocument();
 });
@@ -47,10 +47,10 @@ test("renders BookingForm correctly", () => {
 test("submits BookingForm successfully", async () => {
 	const mockAvailableTimes = ["17:00", "18:00", "19:00"];
 	const mockDispatch = jest.fn();
-	const mockSubmitForm = jest.fn().mockResolvedValue(true); // Mock the submitForm function
+	const mockSubmitForm = jest.fn().mockResolvedValue(true);
 
 	// Mock fetchAPI to return mockAvailableTimes
-	fetchAPI.fetchAPI.mockResolvedValue(mockAvailableTimes); // Ensure fetchAPI is mocked to return available times
+	fetchAPI.fetchAPI.mockResolvedValue(mockAvailableTimes);
 
 	render(
 		<BookingForm
@@ -76,7 +76,7 @@ test("submits BookingForm successfully", async () => {
 
 	// Simulate form submission
 	fireEvent.submit(
-		screen.getByRole("button", { name: /make your reservation/i })
+		screen.getByRole("button", { name: /submit reservation form/i })
 	);
 
 	// Check if submitForm was called with the correct data
@@ -93,7 +93,7 @@ test("submits BookingForm successfully", async () => {
 	await waitFor(() =>
 		expect(mockDispatch).toHaveBeenCalledWith({
 			type: "UPDATE_TIMES",
-			payload: mockAvailableTimes, // The mock fetchAPI will return these available times
+			payload: mockAvailableTimes,
 		})
 	);
 
@@ -101,7 +101,6 @@ test("submits BookingForm successfully", async () => {
 	expect(screen.getByText(/available booking slots/i)).toBeInTheDocument();
 });
 
-// NEW TEST: Validate the form and display errors for invalid inputs
 test("validates form fields and prevents submission if invalid", async () => {
 	const mockAvailableTimes = ["17:00", "18:00", "19:00"];
 	const mockDispatch = jest.fn();
@@ -117,16 +116,25 @@ test("validates form fields and prevents submission if invalid", async () => {
 
 	// Attempt to submit the form without filling in required fields
 	fireEvent.submit(
-		screen.getByRole("button", { name: /make your reservation/i })
+		screen.getByRole("button", { name: /submit reservation form/i })
 	);
 
 	// Check that errors are displayed for each invalid field
-	expect(screen.getByText("Please select a date. *")).toBeInTheDocument();
-	expect(screen.getByText("Please select a time. *")).toBeInTheDocument();
+	expect(screen.getByText("Please select a date. *")).toHaveAttribute(
+		"id",
+		"date-error"
+	);
+	expect(screen.getByText("Please select a time. *")).toHaveAttribute(
+		"id",
+		"time-error"
+	);
 	expect(
 		screen.getByText("Number of guests must be between 1 and 10. *")
-	).toBeInTheDocument();
-	expect(screen.getByText("Please select an occasion. *")).toBeInTheDocument();
+	).toHaveAttribute("id", "guests-error");
+	expect(screen.getByText("Please select an occasion. *")).toHaveAttribute(
+		"id",
+		"occasion-error"
+	);
 
 	// Ensure the form does not submit
 	await waitFor(() => expect(mockSubmitForm).not.toHaveBeenCalled());
@@ -145,7 +153,7 @@ test("validates form fields and prevents submission if invalid", async () => {
 		target: { value: "Birthday" },
 	});
 	fireEvent.submit(
-		screen.getByRole("button", { name: /make your reservation/i })
+		screen.getByRole("button", { name: /submit reservation form/i })
 	);
 
 	// Ensure the form submits with valid data

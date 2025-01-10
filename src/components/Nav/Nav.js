@@ -13,6 +13,7 @@ function Nav() {
 		const section = document.getElementById(id);
 		if (section) {
 			section.scrollIntoView({ behavior: "smooth" });
+			section.focus(); // Set focus to the section for accessibility
 		}
 		setMenuOpen(false);
 	};
@@ -22,7 +23,8 @@ function Nav() {
 			<button
 				className={`hamburger ${menuOpen ? "open" : ""}`}
 				onClick={toggleMenu}
-				aria-label="Toggle Menu"
+				aria-label="Toggle navigation menu"
+				aria-expanded={menuOpen} // Indicate whether the menu is open
 			>
 				<span></span>
 				<span></span>

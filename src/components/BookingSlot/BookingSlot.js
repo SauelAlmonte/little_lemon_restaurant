@@ -11,6 +11,16 @@ function BookingSlot({ time, isBooked, bookingDetails }) {
 		  })
 		: "";
 
+	// Handle keyboard interaction
+	const handleKeyDown = (e) => {
+		if (e.key === "Enter" || e.key === " ") {
+			// Trigger slot action (e.g., booking or showing details)
+			e.preventDefault();
+			// Add your logic here if needed
+			console.log(`Slot at ${time} was interacted with.`);
+		}
+	};
+
 	return (
 		<div
 			className={`booking-slot ${isBooked ? "booked" : "available"}`}
@@ -18,6 +28,7 @@ function BookingSlot({ time, isBooked, bookingDetails }) {
 			aria-pressed={isBooked} // Indicates whether the slot is booked
 			aria-label={`Time slot at ${time} is ${isBooked ? "booked" : "available"}`}
 			tabIndex="0" // Makes it focusable for keyboard navigation
+			onKeyDown={handleKeyDown} // Handles keyboard events
 		>
 			<div className="time-container">
 				<span className="time">{time}</span>

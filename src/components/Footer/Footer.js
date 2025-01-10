@@ -20,13 +20,13 @@ function Footer() {
 				<div className="footer-logo">
 					<img
 						src={logo}
-						alt="little-lemon-logo"
+						alt="Little Lemon logo - Click to scroll to top"
 						onClick={scrollToTop}
 						style={{ cursor: "pointer" }} // Make it clear the logo is clickable
 					/>
 				</div>
 				<div className="footer-nav-and-contact">
-					<div className="footer-nav">
+					<nav className="footer-nav" aria-label="Doormat Navigation">
 						<h3>Doormat Navigation</h3>
 						<ul>
 							<li>
@@ -48,25 +48,39 @@ function Footer() {
 								<a href="#login">Login</a>
 							</li>
 						</ul>
-					</div>
+					</nav>
 					<div className="footer-contact">
 						<h3>Contact</h3>
-						<p>
+						<address>
 							123 Harmony Street
 							<br />
 							Boston, MA 02116
 							<br />
-							(617) 555-7890
-						</p>
-						<p className="email">contact@littlelemon.com</p>
+							<a href="tel:+16175557890">(617) 555-7890</a>
+						</address>
+						<a href="mailto:contact@littlelemon.com" className="email">
+							contact@littlelemon.com
+						</a>
 					</div>
 					<div className="footer-social">
 						<h3>Social Media Links</h3>
 						<div className="social-icons">
-							<img src={instagram} alt="instagram-icon" />
-							<img src={tiktok} alt="tiktok-icon" />
-							<img src={facebook} alt="facebook-icon" />
-							<img src={twitter} alt="twitter-icon" />
+							<a
+								href="https://instagram.com"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								<img src={instagram} alt="Instagram - Visit us on Instagram" />
+							</a>
+							<a href="https://tiktok.com" target="_blank" rel="noopener noreferrer">
+								<img src={tiktok} alt="TikTok - Visit us on TikTok" />
+							</a>
+							<a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+								<img src={facebook} alt="Facebook - Visit us on Facebook" />
+							</a>
+							<a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+								<img src={twitter} alt="Twitter - Visit us on Twitter" />
+							</a>
 						</div>
 					</div>
 				</div>

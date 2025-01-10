@@ -1,5 +1,6 @@
 .booking-form-section {
 	display: flex;
+	flex-direction: column;
 	justify-content: space-around;
 	margin: 0;
 	width: 100%;
@@ -8,6 +9,10 @@
 	box-sizing: border-box;
 	align-items: center;
 	justify-content: center;
+}
+
+.booking-form-section .booking-form-title {
+	margin-bottom: 30px;
 }
 
 .booking-form-container {
@@ -110,6 +115,7 @@ select.error:focus {
 	display: flex;
 	flex-direction: column;
 	align-content: center;
+	width: 100%;
 	max-width: 1000px;
 	margin: 0 auto;
 	padding: 20px 16px;

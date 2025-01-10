@@ -1,9 +1,8 @@
-/* global fetchAPI */
 import React, { useState, useEffect } from "react";
 import "./BookingForm.css";
 import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
 import BookingSlot from "../BookingSlot/BookingSlot";
-import { fetchAPI } from "../../utils/fetchAPI";
+import { fetchAPI as fetchAPIUtil } from "../../utils/fetchAPI";
 
 function BookingForm({ availableTimes, dispatch, submitForm }) {
 	const [date, setDate] = useState("");
@@ -11,7 +10,6 @@ function BookingForm({ availableTimes, dispatch, submitForm }) {
 	const [guests, setGuests] = useState(0);
 	const [occasion, setOccasion] = useState("");
 	const [showModal, setShowModal] = useState(false);
-	const [reservationDetails, setReservationDetails] = useState(null);
 	const [bookedTimes, setBookedTimes] = useState([]);
 	const [errors, setErrors] = useState({}); // Track errors
 
@@ -22,12 +20,12 @@ function BookingForm({ availableTimes, dispatch, submitForm }) {
 		setBookedTimes(savedBookedTimes);
 	}, []);
 
-	// Initialize times using fetchAPI
+	// Initialize times using fetchAPIUtil
 	useEffect(() => {
 		const today = new Date();
 		const fetchTimes = async () => {
 			try {
-				const initialTimes = await fetchAPI(today);
+				const initialTimes = await fetchAPIUtil(today);
 				dispatch({ type: "UPDATE_TIMES", payload: initialTimes });
 			} catch (error) {
 				console.error("Error fetching times:", error);
@@ -60,7 +58,6 @@ function BookingForm({ availableTimes, dispatch, submitForm }) {
 
 		const isSuccessful = await submitForm(newBooking);
 		if (isSuccessful) {
-			setReservationDetails(newBooking);
 			const updatedBookedTimes = [...bookedTimes, newBooking];
 			setBookedTimes(updatedBookedTimes);
 			localStorage.setItem("bookedTimes", JSON.stringify(updatedBookedTimes));
@@ -71,75 +68,124 @@ function BookingForm({ availableTimes, dispatch, submitForm }) {
 	};
 
 	return (
-		<>
-			<div className="booking-form-section">
-				<div className="booking-form-container">
-					<form onSubmit={handleSubmit} className="booking-form" noValidate>
-						<label htmlFor="res-date">Choose date</label>
-						<input
-							type="date"
-							id="res-date"
-							value={date}
-							onChange={(e) => setDate(e.target.value)}
-						/>
-						{errors.date && <p className="error-message">{errors.date}</p>}
-
-						<label htmlFor="res-time">Choose time</label>
-						<select
-							id="res-time"
-							value={time}
-							onChange={(e) => setTime(e.target.value)}
+		<section
+			className="booking-form-section"
+			aria-labelledby="booking-form-title"
+		>
+			<h1 className="booking-form-title">Reserve a Table at Little Lemon</h1>
+			<div className="booking-form-container">
+				<form onSubmit={handleSubmit} className="booking-form" noValidate>
+					<label htmlFor="res-date">Choose date</label>
+					<input
+						type="date"
+						id="res-date"
+						value={date}
+						onChange={(e) => setDate(e.target.value)}
+						aria-describedby="date-error"
+					/>
+					{errors.date && (
+						<p
+							className="error-message"
+							id="date-error"
+							role="alert"
+							aria-live="assertive"
 						>
-							<option value="" disabled>
-								Select time
+							{errors.date}
+						</p>
+					)}
+
+					<label htmlFor="res-time">Choose time</label>
+					<select
+						id="res-time"
+						value={time}
+						onChange={(e) => setTime(e.target.value)}
+						aria-describedby="time-error"
+					>
+						<option value="" disabled>
+							Select time
+						</option>
+						{availableTimes.map((availableTime, index) => (
+							<option
+								key={index}
+								value={availableTime}
+								disabled={bookedTimes.some(
+									(booking) => booking.date === date && booking.time === availableTime
+								)}
+							>
+								{availableTime}
 							</option>
-							{availableTimes.map((availableTime, index) => (
-								<option
-									key={index}
-									value={availableTime}
-									disabled={bookedTimes.some(
-										(booking) => booking.date === date && booking.time === availableTime
-									)}
-								>
-									{availableTime}
-								</option>
-							))}
-						</select>
-						{errors.time && <p className="error-message">{errors.time}</p>}
-
-						<label htmlFor="guests">Number of guests</label>
-						<input
-							type="number"
-							id="guests"
-							placeholder="0"
-							min="1"
-							max="10"
-							value={guests}
-							onChange={(e) => setGuests(parseInt(e.target.value) || 1)}
-						/>
-						{errors.guests && <p className="error-message">{errors.guests}</p>}
-
-						<label htmlFor="occasion">Occasion</label>
-						<select
-							id="occasion"
-							value={occasion}
-							onChange={(e) => setOccasion(e.target.value)}
+						))}
+					</select>
+					{errors.time && (
+						<p
+							className="error-message"
+							id="time-error"
+							role="alert"
+							aria-live="assertive"
 						>
-							<option value="" disabled>
-								Select occasion
-							</option>
-							<option value="Birthday">Birthday</option>
-							<option value="Anniversary">Anniversary</option>
-							<option value="Engagement">Engagement</option>
-						</select>
-						{errors.occasion && <p className="error-message">{errors.occasion}</p>}
+							{errors.time}
+						</p>
+					)}
 
-						<input type="submit" value="Make Your Reservation" />
-					</form>
-				</div>
+					<label htmlFor="guests">Number of guests</label>
+					<input
+						type="number"
+						id="guests"
+						placeholder="0"
+						min="1"
+						max="10"
+						value={guests}
+						onChange={(e) => setGuests(parseInt(e.target.value) || 1)}
+						aria-describedby="guests-error"
+					/>
+					{errors.guests && (
+						<p
+							className="error-message"
+							id="guests-error"
+							role="alert"
+							aria-live="assertive"
+						>
+							{errors.guests}
+						</p>
+					)}
+
+					<label htmlFor="occasion">Occasion</label>
+					<select
+						id="occasion"
+						value={occasion}
+						onChange={(e) => setOccasion(e.target.value)}
+						aria-describedby="occasion-error"
+					>
+						<option value="" disabled>
+							Select occasion
+						</option>
+						<option value="Birthday">Birthday</option>
+						<option value="Anniversary">Anniversary</option>
+						<option value="Engagement">Engagement</option>
+					</select>
+					{errors.occasion && (
+						<p
+							className="error-message"
+							id="occasion-error"
+							role="alert"
+							aria-live="assertive"
+						>
+							{errors.occasion}
+						</p>
+					)}
+
+					<input
+						type="submit"
+						value="Make Your Reservation"
+						aria-label="Submit reservation form"
+					/>
+				</form>
 			</div>
-			<div className="booking-slots-section">
-				<h2>Available Booking Slots</h2>
+			<div
+				className="booking-slots-section"
+				aria-labelledby="available-slots-title"
+			>
+				<h2 id="available-slots-title">Available Booking Slots</h2>
 				<div className="booking-slots">
 					{availableTimes.map((availableTime, index) => (
 						<BookingSlot
@@ -150,7 +196,7 @@ function BookingForm({ availableTimes, dispatch, submitForm }) {
 							)}
 							bookingDetails={bookedTimes.find(
 								(booking) => booking.date === date && booking.time === availableTime
-							)} // Pass booking details if booked
+							)}
 						/>
 					))}
 				</div>
@@ -159,7 +205,7 @@ function BookingForm({ availableTimes, dispatch, submitForm }) {
 				show={showModal}
 				bookingDetails={{ date, time, occasion }}
 			/>
-		</>
+		</section>
 	);
 }
 

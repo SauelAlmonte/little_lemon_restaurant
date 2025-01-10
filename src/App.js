@@ -8,11 +8,11 @@ import ConfirmationPage from "./components/ConfirmedBooking/ConfirmedBooking";
 
 function App() {
 	return (
-		<div className="App">
+		<div className="App" role="application" aria-label="Little Lemon App">
 			<Header className="App-header" />
-			<main className="App-main">
+			<main className="App-main" role="main">
 				<Routes>
-					<Route path="/confirmation" element={<ConfirmationPage />} /> {/* Add ConfirmationPage route */}
+					<Route path="/confirmation" element={<ConfirmationPage />} />
 					<Route path="*" element={<Main />} />
 				</Routes>
 			</main>
