@@ -1,13 +1,16 @@
-import { render } from "@testing-library/react";
-import { MemoryRouter, Routes, Route } from "react-router-dom";
-import Main from "./components/Main/Main";
+import { render, screen } from "@testing-library/react";
+import { MemoryRouter } from "react-router-dom";
+import App from "./App";
 
-test("renders Main component for root path /", () => {
+test("renders App component", () => {
 	render(
-		<MemoryRouter initialEntries={["/"]}>
-			<Routes>
-				<Route path="*" element={<Main />} /> {/* Add * to parent path */}
-			</Routes>
+		<MemoryRouter>
+			<App />
 		</MemoryRouter>
 	);
+
+	// Example assertion
+	// Replace with actual text from your App component
+	const linkElement = screen.getByText(/specials/i);
+	expect(linkElement).toBeInTheDocument();
 });

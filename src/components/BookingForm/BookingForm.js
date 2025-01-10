@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import "./BookingForm.css";
 import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
 import BookingSlot from "../BookingSlot/BookingSlot";
+import { fetchAPI } from "../../utils/fetchAPI";
 
 function BookingForm({ availableTimes, dispatch, submitForm }) {
 	const [date, setDate] = useState("");
